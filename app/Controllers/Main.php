@@ -20,7 +20,7 @@ class Main extends BaseController
     {
         $data = [];
         $schoolid = $this->session->schoolid;
-        $data['school'] = $this->model->fetch_row_data('schools', array('school_id'=>$schoolid));
+        $data['school'] = $this->model->fetch_row_data('schools', array('school_id' => $schoolid));
         $data['title'] = "Schools infosheet";
         $data['_view'] = "main/school/infosheet";
         return view('layouts/main', $data);
@@ -45,78 +45,78 @@ class Main extends BaseController
                 $data['degrees'] = $this->model->fetch_all_data('classes_degrees', array('degree_school_id' => $schoolid), 'degree_created_at');
                 break;
             default:
-            $data['classes'] = $this->join->fetch_join_classes(array('classe_school_id' => $schoolid), 'classe_created_at');
-            $data['degrees'] = $this->model->fetch_all_data('classes_degrees', array('degree_school_id' => $schoolid), 'degree_created_at');
-            $data['options'] = $this->join->fetch_join_data('classes_options', 'sections', 'section_id = option_section_id', array('option_school_id' => $schoolid), 'option_created_at');
-            $data['years'] = $this->model->fetch_all_data('years', array('year_deleted_at' => null, 'year_school_id' => $schoolid), 'year_created_at');  
+                $data['classes'] = $this->join->fetch_join_classes(array('classe_school_id' => $schoolid), 'classe_created_at');
+                $data['degrees'] = $this->model->fetch_all_data('classes_degrees', array('degree_school_id' => $schoolid), 'degree_created_at');
+                $data['options'] = $this->join->fetch_join_data('classes_options', 'sections', 'section_id = option_section_id', array('option_school_id' => $schoolid), 'option_created_at');
+                $data['years'] = $this->model->fetch_all_data('years', array('year_deleted_at' => null, 'year_school_id' => $schoolid), 'year_created_at');
         }
         //dd($data['sections']);
         $data['title'] = "Configuration of " . $page;
         $data['_view'] = "main/config/" . $page;
         return view('layouts/main', $data);
     }
-    
+
     public function changeStatus($table = null, $status_value = null, $uid = null)
     {
         $schoolid = $this->session->schoolid;
-        
-        if($table == 'sectionActivation'){
+
+        if ($table == 'sectionActivation') {
             $section_type = ($status_value == 'actif') ? 'inactif' : 'actif';
 
             session()->set('sectionsendsms', $section_type);
             //update data in table
-            $this->model->update_data('sections', ['section_type' => $section_type ], array('section_id' => $uid));
+            $this->model->update_data('sections', ['section_type' => $section_type], array('section_id' => $uid));
             return redirect()->back()->with('success', "Modification activation section effectuée avec succés");
-        }else{
-        
-        switch ($table) {
-            case 'option':
-                $realnametable = 'classes_options';
-                $real_uid = 'option_id';
-                $status = 'option_status';
-                $updated_time = 'option_updated_at';
-                break;
-            case 'degrees':
-                $realnametable = 'classes_degrees';
-                $real_uid = 'degree_id';
-                $status = 'degree_status';
-                $updated_time = 'degree_updated_at';
-                break;
-            default:
-                $realnametable = $table . 's';
-                $real_uid = $table . '_id';
-                $status = $table . '_status';
-                $updated_time = $table . '_updated_at';
-        }
+        } else {
 
-        $statusData = array(
-            $status => ($status_value == 'actif') ? 'inactif' : 'actif',
-            $updated_time => date('Y-m-d H:i:s'),
-        );
+            switch ($table) {
+                case 'option':
+                    $realnametable = 'classes_options';
+                    $real_uid = 'option_id';
+                    $status = 'option_status';
+                    $updated_time = 'option_updated_at';
+                    break;
+                case 'degrees':
+                    $realnametable = 'classes_degrees';
+                    $real_uid = 'degree_id';
+                    $status = 'degree_status';
+                    $updated_time = 'degree_updated_at';
+                    break;
+                default:
+                    $realnametable = $table . 's';
+                    $real_uid = $table . '_id';
+                    $status = $table . '_status';
+                    $updated_time = $table . '_updated_at';
+            }
 
-        if ($this->model->update_data($realnametable, $statusData, array($real_uid => $uid))) {
+            $statusData = array(
+                $status => ($status_value == 'actif') ? 'inactif' : 'actif',
+                $updated_time => date('Y-m-d H:i:s'),
+            );
 
-            if($table == 'year'){
-                $this->model->update_data('years', ['year_status' => 'inactif'], array('year_id !=' => $uid));
-                
-                if (!empty($uid)){
-                    $year = $this->model->fetch_row_data('years', array('year_id' => $uid, 'year_school_id' => $schoolid));
-                    if ((!empty($year))) {
-                        session()->set('yearid', $year['year_id']);
-                        session()->set('yeartoken', $year['year_token']);
-                        session()->set('yearstarted', $year['year_started']);
-                        session()->set('yearclosing', $year['year_ended']);
-                        session()->set('yearstartdate', $year['year_start_date']);
-                        session()->set('yearclosingdate', $year['year_close_date']);
-                        session()->set('yearstatus', $year['year_status']);
-                        session()->set('schoolyear', $year['year_started'].'-'.$year['year_ended']);
+            if ($this->model->update_data($realnametable, $statusData, array($real_uid => $uid))) {
+
+                if ($table == 'year') {
+                    $this->model->update_data('years', ['year_status' => 'inactif'], array('year_id !=' => $uid));
+
+                    if (!empty($uid)) {
+                        $year = $this->model->fetch_row_data('years', array('year_id' => $uid, 'year_school_id' => $schoolid));
+                        if ((!empty($year))) {
+                            session()->set('yearid', $year['year_id']);
+                            session()->set('yeartoken', $year['year_token']);
+                            session()->set('yearstarted', $year['year_started']);
+                            session()->set('yearclosing', $year['year_ended']);
+                            session()->set('yearstartdate', $year['year_start_date']);
+                            session()->set('yearclosingdate', $year['year_close_date']);
+                            session()->set('yearstatus', $year['year_status']);
+                            session()->set('schoolyear', $year['year_started'] . '-' . $year['year_ended']);
+                        }
                     }
                 }
+                return redirect()->back()->with('success', "Modification Statut effectuée avec succés");
+            } else {
+                return redirect()->back()->with('failed', "ERROR: Opération non effectuée. Réessayer plus tard");
             }
-            return redirect()->back()->with('success', "Modification Statut effectuée avec succés");
-        } else {
-            return redirect()->back()->with('failed', "ERROR: Opération non effectuée. Réessayer plus tard");
-        }
         }
     }
     public function remove($table = null, $uid = null)
@@ -127,19 +127,19 @@ class Main extends BaseController
                 $real_uid = 'option_id';
                 break;
             case 'degree':
-                    $realnametable = 'classes_degrees';
-                    $real_uid = 'degree_id';
-                    break;
+                $realnametable = 'classes_degrees';
+                $real_uid = 'degree_id';
+                break;
             default:
                 $realnametable = $table . 's';
                 $real_uid = $table . '_id';
         }
         if ($this->model->delete_data($realnametable, array($real_uid => $uid))) {
             /*============= CREATE USER ACTIVITY ==============*/
-        $this->createUserActivity('delete'.$table);
-        /*============= END USER ACTIVITY ==============*/
-        
-        return redirect()->back()->with('success', "Suppression $table effectuée avec succés");
+            $this->createUserActivity('delete' . $table);
+            /*============= END USER ACTIVITY ==============*/
+
+            return redirect()->back()->with('success', "Suppression $table effectuée avec succés");
         } else {
             return redirect()->back()->with('failed', "Suppression non effectuée. Réessayer plus tard");
         }
@@ -147,24 +147,24 @@ class Main extends BaseController
     public function saveSchool($school_id = null)
     {
         $data = [];
-        $school_data =[];
+        $school_data = [];
         if (!empty($school_id)) {
-            
-            $school_data = $this->model->fetch_row_data('schools', array('school_id'=>$school_id));
+
+            $school_data = $this->model->fetch_row_data('schools', array('school_id' => $school_id));
             $data['school'] = $school_data;
 
-            if ($this->request->getFile('logo') OR $this->request->getFile('picture')) {
+            if ($this->request->getFile('logo') or $this->request->getFile('picture')) {
                 $fullPathFile = 'public/uploads/images';
-                $logo_random_name ='';
-                $cover_picture_name ='';
+                $logo_random_name = '';
+                $cover_picture_name = '';
 
-                $update_uplaod_file = FALSE;
+                $update_uplaod_file = false;
 
-                $db_school_logo = $school_data['school_logo']; 
-                $db_school_cover = $school_data['school_picture_cover']; 
+                $db_school_logo = $school_data['school_logo'];
+                $db_school_cover = $school_data['school_picture_cover'];
 
                 if (!empty($this->request->getFile('logo')->getName())) {
-                
+
                     $rulers = [
                         'logo' => [
                             'rules' => 'uploaded[logo]|max_size[logo,4096]|ext_in[logo,png,jpg,jpeg,webp]',
@@ -181,9 +181,9 @@ class Main extends BaseController
                             $logo_random_name = $logoFile->getRandomName();
                             //move to upload directory
                             $logoFile->move(ROOTPATH . $fullPathFile, $logo_random_name);
-                            $update_uplaod_file = TRUE;
-                            
-                            $file_path_logo = $fullPathFile.'/'.$db_school_logo;
+                            $update_uplaod_file = true;
+
+                            $file_path_logo = $fullPathFile . '/' . $db_school_logo;
 
                             if (file_exists($file_path_logo)) {
 
@@ -196,56 +196,56 @@ class Main extends BaseController
                     }
                 }
                 if (!empty($this->request->getFile('picture')->getName())) {
-                            $rulers = [ 
-                                'picture' => [
-                                    'rules' => 'uploaded[picture]|max_size[picture,4096]|ext_in[picture,png,jpg,jpeg,webp]',
-                                    'errors' => [
-                                        'uploaded' => 'le fichier doit etre au format image et doit avoir tout au plus 4Mo',
-                                    ],
-                                ],
-                            ];
-                            if ($this->validate($rulers)) {
-                                $picture_file = $this->request->getFile('picture');
-                                if ($picture_file->isValid() && !$picture_file->hasMoved()) {
-                                    //rename image
-                                    $cover_picture_name = $picture_file->getRandomName();
-                                    //move to upload directory
-                                    $picture_file->move(ROOTPATH . $fullPathFile, $cover_picture_name);
-                                    $update_uplaod_file = TRUE;
-                                   
-                                    $file_path_cover = $fullPathFile.'/'.$db_school_cover;
+                    $rulers = [
+                        'picture' => [
+                            'rules' => 'uploaded[picture]|max_size[picture,4096]|ext_in[picture,png,jpg,jpeg,webp]',
+                            'errors' => [
+                                'uploaded' => 'le fichier doit etre au format image et doit avoir tout au plus 4Mo',
+                            ],
+                        ],
+                    ];
+                    if ($this->validate($rulers)) {
+                        $picture_file = $this->request->getFile('picture');
+                        if ($picture_file->isValid() && !$picture_file->hasMoved()) {
+                            //rename image
+                            $cover_picture_name = $picture_file->getRandomName();
+                            //move to upload directory
+                            $picture_file->move(ROOTPATH . $fullPathFile, $cover_picture_name);
+                            $update_uplaod_file = true;
 
-                                    if(file_exists($file_path_cover)){
-                                        
-                                        if (chdir($fullPathFile) && (!empty($db_school_cover))) {
-                                            //REMOVE EXISTING FILE
-                                            unlink($db_school_cover);
-                                        }
-                                    }
-                                    
+                            $file_path_cover = $fullPathFile . '/' . $db_school_cover;
+
+                            if (file_exists($file_path_cover)) {
+
+                                if (chdir($fullPathFile) && (!empty($db_school_cover))) {
+                                    //REMOVE EXISTING FILE
+                                    unlink($db_school_cover);
                                 }
                             }
-                }
-                   
-                if($update_uplaod_file == TRUE){
-                    $db_updated_logo = (!empty($logo_random_name)) ? $logo_random_name: $db_school_logo; 
-                    $db_updated_cover = (!empty($cover_picture_name)) ? $cover_picture_name: $db_school_cover; 
-                        $update_school_data = [
-                            'school_logo' => $db_updated_logo,
-                            'school_picture_cover' => $db_updated_cover,
-                        ];
-                        //update data in table
-                        if ($this->model->update_data('schools', $update_school_data, array('school_id' => $school_id))) {
-                            session()->set('schoollogo', $logo_random_name);
-                            session()->set('schoolpicture', $cover_picture_name);
-                            return redirect()->back()->with('success', "Modification logo école effectuée avec succés");
+
                         }
-                }else {
-                        $this->session->setFlashdata('failed', 'Veuillez  vérifier ci-dessous les problèmes rencontrés puis réessayer !');
-                        $data['validation'] = $this->validator;
-                        $data['_view'] = ('main/school/infosheet');
-                        echo view('layouts/main', $data);
                     }
+                }
+
+                if ($update_uplaod_file == true) {
+                    $db_updated_logo = (!empty($logo_random_name)) ? $logo_random_name : $db_school_logo;
+                    $db_updated_cover = (!empty($cover_picture_name)) ? $cover_picture_name : $db_school_cover;
+                    $update_school_data = [
+                        'school_logo' => $db_updated_logo,
+                        'school_picture_cover' => $db_updated_cover,
+                    ];
+                    //update data in table
+                    if ($this->model->update_data('schools', $update_school_data, array('school_id' => $school_id))) {
+                        session()->set('schoollogo', $logo_random_name);
+                        session()->set('schoolpicture', $cover_picture_name);
+                        return redirect()->back()->with('success', "Modification logo école effectuée avec succés");
+                    }
+                } else {
+                    $this->session->setFlashdata('failed', 'Veuillez  vérifier ci-dessous les problèmes rencontrés puis réessayer !');
+                    $data['validation'] = $this->validator;
+                    $data['_view'] = ('main/school/infosheet');
+                    echo view('layouts/main', $data);
+                }
             }
             if (!empty($school_id) && $this->request->getPost()) {
                 $rulers = [
@@ -308,8 +308,7 @@ class Main extends BaseController
 
                     $slogan = trim(htmlspecialchars($this->request->getPost('school_slogan')));
                     $website = trim(htmlspecialchars($this->request->getPost('school_website')));
-                   
-                
+
                     $current_datetime = date('Y-m-d H:i:s');
                     $update_school_data = [
                         'school_fullname' => $name,
@@ -334,7 +333,7 @@ class Main extends BaseController
                     ];
                     //update data in table
                     if ($this->model->update_data('schools', $update_school_data, array('school_id' => $school_id))) {
-                        
+
                         $school_data = $this->model->fetch_row_data('schools', array('school_id' => $school_id));
                         if ((!empty($school_data)) && count($school_data) >= 0) {
                             session()->set('schoolid', $school_data['school_id']);
@@ -361,10 +360,10 @@ class Main extends BaseController
                             session()->set('schoolidcode', $school_data['school_code']);
 
                         }
-                        
+
                         return redirect()->back()->with('success', "Modification fiche école effectuée avec succés");
                     }
-                }else {
+                } else {
                     $this->session->setFlashdata('failed', 'Veuillez  vérifier ci-dessous les problèmes rencontrés puis réessayer !');
                     $data['validation'] = $this->validator;
                     $data['_view'] = ('main/school/edit');
@@ -374,11 +373,11 @@ class Main extends BaseController
                 $data['school'] = $school_data;
                 $data['_view'] = ('main/school/edit');
                 echo view('layouts/main', $data);
-            } 
-        }else{
+            }
+        } else {
             return redirect()->back()->with('failed', "Fiche introuvable");
-                    
-        } 
+
+        }
     }
     public function saveSchoolYear($token_year = null)
     {
@@ -471,23 +470,23 @@ class Main extends BaseController
                     ];
                     //save new data in table  '', ''
                     $update_year_status = ['year_status' => 'inactif', 'year_close_date' => date('Y-m-d')];
-                    if ($this->model->update_data('years', $update_year_status, array('year_school_id' => $school_id,'year_status' => 'actif'))) {
+                    if ($this->model->update_data('years', $update_year_status, array('year_school_id' => $school_id, 'year_status' => 'actif'))) {
                         $this->model->insert_data('years', $save_year_data);
 
-                       //GET ALL SCHOOL YEAR INFORMATION
+                        //GET ALL SCHOOL YEAR INFORMATION
                         $year = $this->model->fetch_row_data('years', array('year_token' => $year_random_token, 'year_school_id' => $school_id));
-                            if (!empty($year)) {
-                                session()->set('yearid', $year['year_id']);
-                                session()->set('yeartoken', $year['year_token']);
-                                session()->set('yearstarted', $year['year_started']);
-                                session()->set('yearclosing', $year['year_ended']);
-                                session()->set('yearstartdate', $year['year_start_date']);
-                                session()->set('yearclosingdate', $year['year_close_date']);
-                                session()->set('yearstatus', $year['year_status']);
-                                session()->set('schoolyear', $year['year_started'].'-'.$year['year_ended']);
-                            }
+                        if (!empty($year)) {
+                            session()->set('yearid', $year['year_id']);
+                            session()->set('yeartoken', $year['year_token']);
+                            session()->set('yearstarted', $year['year_started']);
+                            session()->set('yearclosing', $year['year_ended']);
+                            session()->set('yearstartdate', $year['year_start_date']);
+                            session()->set('yearclosingdate', $year['year_close_date']);
+                            session()->set('yearstatus', $year['year_status']);
+                            session()->set('schoolyear', $year['year_started'] . '-' . $year['year_ended']);
+                        }
 
-                        return redirect()->back()->with('success', "Nouvelle année lancée avec succés. l'affichage de données liees aux années sera initialisé.");
+                        return redirect()->back()->with('success', "Nouvelle année lancée avec succés. l'affichage de données liées sera initialisé !");
                     } else {
                         return redirect()->back()->with('failed', "ERREUR: Désolé, une erreur systeme s'est produite. Veuillez réessayer plus tard.");
                     }
@@ -508,15 +507,15 @@ class Main extends BaseController
             'section_name' => [
                 'rulers' => 'required',
                 'errors' => [
-                    'required' => "nom obligatoire",
+                    'required' => "faculté obligatoire",
                 ],
             ],
         ];
 
         if ($this->validate($rulers)) {
 
-            $section_name = esc(trim($this->request->getPost('section_name')));
-            $section_code = esc(trim($this->request->getPost('section_code')));
+            $section_name = (trim($this->request->getPost('section_name')));
+            $section_code = (trim($this->request->getPost('section_code')));
 
             $current_datetime = date('Y-m-d H:i:s');
             if (!empty($section_uid)) {
@@ -565,7 +564,7 @@ class Main extends BaseController
             'section_id' => [
                 'rulers' => 'required',
                 'errors' => [
-                    'required' => "section obligatoire",
+                    'required' => "faculté obligatoire",
                 ],
             ],
         ];
@@ -578,7 +577,7 @@ class Main extends BaseController
             $current_datetime = date('Y-m-d H:i:s');
             if (!empty($option_uid)) {
                 $updateTypeData = [
-                    'option_code' => (!empty($option_code)) ? $option_code: setReferenceCode(),
+                    'option_code' => (!empty($option_code)) ? $option_code : setReferenceCode(),
                     'option_name' => $option_name,
                     'option_updated_at' => $current_datetime,
                     'option_section_id' => $section_id,
@@ -592,7 +591,7 @@ class Main extends BaseController
                 //create new type
                 $createNewTypeData = [
                     'option_token' => setPrimaryKey(),
-                    'option_code' => (!empty($option_code)) ? $option_code: setReferenceCode(),
+                    'option_code' => (!empty($option_code)) ? $option_code : setReferenceCode(),
                     'option_name' => $option_name,
                     'option_status' => 'actif',
                     'option_created_at' => $current_datetime,
@@ -615,7 +614,7 @@ class Main extends BaseController
             'degre_level' => [
                 'rulers' => 'required',
                 'errors' => [
-                    'required' => "Degrès obligatoire",
+                    'required' => "Niveau obligatoire",
                 ],
             ],
             'long_name' => [
@@ -627,12 +626,11 @@ class Main extends BaseController
         ];
 
         if ($this->validate($rulers)) {
-            
+
             $degree_level = (trim($this->request->getPost('degre_level')));
             $degree_name = (trim($this->request->getPost('long_name')));
             $degree_shortname = (trim($this->request->getPost('short_name')));
-            
-            
+
             $schoolid = $this->session->schoolid;
             $current_datetime = date('Y-m-d H:i:s');
             if (!empty($degree_id)) {
@@ -647,7 +645,7 @@ class Main extends BaseController
                     return redirect()->back()->with('success', "Modification Niveaux d'études effectuée avec succés");
                 }
             } else {
-                if ($this->model->fetch_row_data('classes_degrees', array('degree_school_id' => $schoolid,'degree_code' => $degree_level))) {
+                if ($this->model->fetch_row_data('classes_degrees', array('degree_school_id' => $schoolid, 'degree_code' => $degree_level))) {
                     return redirect()->back()->with('failed', "Le Niveau d'étude $degree_level existe dans le système, veuillez créer un autre");
                 }
                 $createNewTypeData = [
@@ -668,7 +666,7 @@ class Main extends BaseController
             return redirect()->back()->with('failed', "Opération non effectuée. Veuillez réessayer plus tard !");
         }
     }
-    public function saveClasse($id_classe=null)
+    public function saveClasse($id_classe = null)
     {
         $schoolid = $this->session->schoolid;
         $data = [];
@@ -695,17 +693,16 @@ class Main extends BaseController
 
         if ($this->validate($rulers)) {
             $places_classe = (trim($this->request->getPost('places_classe')));
-           
             $degres_classe = (trim($this->request->getPost('degres_classe')));
             $short_name_classe = (trim($this->request->getPost('classe_shortname')));
             $option_classe = (trim($this->request->getPost('option_classe')));
             $classe_subname = (trim($this->request->getPost('sub_classe')));
-            $comments= (trim($this->request->getPost('notes')));
+            $comments = (trim($this->request->getPost('notes')));
             $current_datetime = date('Y-m-d H:i:s');
 
-            $name_classe = $degres_classe.'-'.$option_classe.'-'.$classe_subname; 
+            $name_classe = $degres_classe . '-' . $option_classe . '-' . $classe_subname;
 
-            if (! empty($id_classe)) {
+            if (!empty($id_classe)) {
                 //table data
                 $update_classe_data = [
                     'classe_subname' => $classe_subname,
@@ -719,9 +716,9 @@ class Main extends BaseController
                 if ($this->model->update_data('classes', $update_classe_data, array('classe_id' => $id_classe))) {
                     return redirect()->back()->with('success', "Modification de la promotion effectuée avec succés");
                 }
-               
+
             } else {
-                if ($this->model->fetch_row_data('classes', array('classe_degree_id' => $degres_classe,'classe_option_id' => $option_classe, 'classe_subname' => $classe_subname))) {
+                if ($this->model->fetch_row_data('classes', array('classe_degree_id' => $degres_classe, 'classe_option_id' => $option_classe, 'classe_subname' => $classe_subname))) {
                     return redirect()->back()->with('failed', "La promotion choisie existe dans le système, veuillez créer un autre");
                 }
                 $create_new_classe = [
@@ -739,19 +736,16 @@ class Main extends BaseController
                     'classe_type' => 'general',
                     'classe_notes' => $comments,
                 ];
-                //update data in table
-                //save new data in table  '', ''
                 if ($this->model->insert_data('classes', $create_new_classe)) {
                     return redirect()->back()->with('success', "Création de la promotion effectuée avec succés");
                 }
-            } 
+            }
         } else {
 
             $data['classes'] = $this->join->fetch_join_classes(array('classe_school_id' => $schoolid), 'classe_created_at');
             $data['degrees'] = $this->model->fetch_all_data('classes_degrees', array('degree_school_id' => $schoolid), 'degree_created_at');
             $data['options'] = $this->join->fetch_join_data('classes_options', 'sections', 'section_id = option_section_id', array('option_school_id' => $schoolid), 'option_created_at');
-            $data['years'] = $this->model->fetch_all_data('years', array('year_deleted_at' => null, 'year_school_id' => $schoolid), 'year_created_at');  
-        
+            $data['years'] = $this->model->fetch_all_data('years', array('year_deleted_at' => null, 'year_school_id' => $schoolid), 'year_created_at');
 
             $this->session->setFlashdata('failed', 'Opération non effectuée. Veuillez  vérifier ci-dessous les problèmes rencontrées puis réessayer !');
             $data['validation'] = $this->validator;
