@@ -1,0 +1,25 @@
+{
+	"name": "Ditotase Magschool",
+	"short_name": "Magschool",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"background_color": "#ffffff",
+	"theme_color": "#007bff",
+	"orientation": "any",
+	"lang": "fr",
+	"dir": "ltr",
+	"description": "Magschool est une solution de gestion scolaire des établissements en RDC. Développée par Ditotase, une agence digitale spécialisée dans le développement de solutions informatiques, basée à Lubumbashi en RDC.",
+	"icons": [
+	  {
+		"src": "img/192x192.png",
+		"sizes": "192x192",
+		"type": "image/png"
+	  },
+	  {
+		"src": "img/512x512.png",
+		"sizes": "512x512",
+		"type": "image/png"
+	  }
+	]
+  }  
