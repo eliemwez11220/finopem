@@ -5,7 +5,7 @@
                 <div class="row mb-2 text-center">
                     <div class="col-sm-12 col-lg-12">
                         <h1 class="font-weight-bold text-uppercase">
-                            Details configuration frais par classe
+                            Details configuration frais par promotions
                         </h1>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                                 <h3><i class="fas fa-cogs"></i>
                                 AFFECTATION [<span class="text-danger text-uppercase">
                                     <?= $fee['feedetail_name'];?></span> ] 
-                                    DANS DES CLASSES
+                                    DANS DES PROMOTIONS CORRESPONDANTES
                                     <a href="<?= base_url('fees/feesclasses'); ?>" class="btn btn-info">
                                         <i class="fa fa-reply-all fa-lg"></i>
                                     </a>
@@ -44,14 +44,14 @@
                                 <table class="table table-sm">
                                       <thead>
                                           <tr>
-                                              <th>CLASSES </th>
-                                              <th>OPTION</th>
+                                              <th>PROMOTIONS </th>
+                                              <th>FILIERES</th>
                                               <th>AFFECTATION</th>
                                           </tr>
                                       </thead>
                                       <tbody>
                                           <tr>
-                                              <td colspan="2"><b>SELECTIONNER TOUTES LES CLASSES</b></td>
+                                              <td colspan="2"><b>SELECTIONNER TOUTES LES PROMOTIONS</b></td>
                                               <td>  <span class="text-danger font-weight-bold">
                                               Payable par tous ?
                                                </span> <input type="checkbox" name="select_alls" id="select_alls"> </td>
@@ -59,7 +59,7 @@
                                           <?php foreach ($classes as $key) {?>
                                           <tr>
                                               <td class="text-uppercase">
-                                                  <?= setDegresLevels($key['degree_code']);?>
+                                                  <?= setDegresLevels($key['degree_code'], 'f');?>
                                                   <?= $key['classe_subname'];?>
                                                   <?= $key['section_name'];?>
                                               </td>
@@ -89,7 +89,7 @@
                             <?php } else { ?>
                                   <div class="text-center">
                                       <div class="alert alert-info">
-                                          <h3>Aucune Classe enregistrée</h3>
+                                          <h3>Aucune promotion enregistrée</h3>
                                       </div>
                                   </div> 
                             <?php }?>

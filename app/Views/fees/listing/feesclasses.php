@@ -9,7 +9,7 @@
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('fees/feestypes') ?>">Types Frais</a>
                             </li>
-                            <li class="breadcrumb-item active">Frais classes</li>
+                            <li class="breadcrumb-item active">Frais par promotions</li>
                         </ol>
                     </div>
                 </div>
@@ -17,9 +17,9 @@
                     <div class="row mb-2 text-center">
                         <div class="col-sm-12 col-lg-12">
                             <h1 class="font-weight-bold text-uppercase">
-                                configuration frais par classe</h1>
+                                configuration frais par promotion</h1>
                             <p class="font-weight-bold h5">
-                                Veuillez sélectionner un type de frais a configurer par classe dans
+                                Veuillez sélectionner un type de frais a configurer par promotions dans
                                 la liste ci-dessous
                             </p>
 
@@ -36,9 +36,9 @@
                                   foreach ($fees as $key => $value): ?>
                                         <option value="<?= esc($value['fee_id']); ?>"
                                             <?= (session()->feechoosed && (session()->feechoosed == $value['fee_id']))?'selected':set_select('ajax_fees_classes', esc($value['fee_id'])); ?>>
-                                            <?= (strtoupper($value['fee_name'])); ?> | Payable
-                                            <?= (strtoupper($value['fee_total_payable'])); ?> fois en
-                                            <?= (strtoupper($value['fee_currency_payable'])); ?>
+                                            <?= trim(strtoupper($value['fee_name'])); ?> | Payable
+                                            <?= trim(strtoupper($value['fee_total_payable'])); ?> fois en
+                                            <?= trim(strtoupper($value['fee_currency_payable'])); ?>
                                         </option>
                                         <?php endforeach; ?>
                                         <?php endif; ?>
@@ -50,7 +50,7 @@
                 </div>
             </div>
     </section>
-    <?php if (isset(session()->feepaidchoosed) && !empty(session()->feepaidchoosed)):?>
+    <?php if (session()->has('feepaidchoosed') && !empty(session()->get('feepaidchoosed'))):?>
     <section class="content">
         <div class="container-fluid">
 
@@ -61,7 +61,7 @@
                             <h3><i class="fas fa-list"></i>
                                 AFFECTATION [<span class="text-danger text-uppercase">
                                     <?= session()->feepaidchoosed['fee_name'];?></span>]
-                                DANS DES CLASSES
+                                DANS DES PROMOTIONS CONCERNEES
                                 <a href="<?php  echo base_url('fees/details/feetype/'.session()->feepaidchoosed['fee_id']); ?>"
                                     class="btn btn-info">
                                     <i class="fa fa-reply-all fa-lg"></i>
@@ -81,14 +81,14 @@
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
-                                        <th>CLASSES </th>
-                                        <th>OPTION</th>
+                                        <th>PROMOTIONS </th>
+                                        <th>FILIERES</th>
                                         <th>AFFECTATION</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td colspan="2"><b>SELECTIONNER TOUTES LES CLASSES</b></td>
+                                        <td colspan="2"><b>SELECTIONNER TOUTES LES PROMOTIONS</b></td>
                                         <td> <span class="text-danger font-weight-bold">
                                                 Payable par tous ?
                                             </span> <input type="checkbox" name="select_alls" id="select_alls" />
@@ -122,7 +122,7 @@
                             <?php } else { ?>
                             <div class="text-center">
                                 <div class="alert alert-info">
-                                    <h3>Aucune Classe enregistrée</h3>
+                                    <h3>Aucune promotion enregistrée</h3>
                                 </div>
                             </div>
                             <?php }?>

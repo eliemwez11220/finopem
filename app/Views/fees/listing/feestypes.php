@@ -7,14 +7,17 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-sm-6">
-                            <h5 class="font-weight-bold">Configuration Nomenclature frais</h5>
+                            <h5 class="font-weight-bold text-uppercase">
+                                Configuration des Nomenclatures de frais
+                            </h5>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a
                                             href="<?= base_url('dashboard') ?>">Accueil</a>
                                 </li>
-                                <li class="breadcrumb-item active">Nomenclature frais</li>
+                                <li class="breadcrumb-item active">Configuration</li>
+                                <li class="breadcrumb-item active">Nomenclatures frais</li>
                             </ol>
                         </div>
                     </div>
@@ -29,9 +32,9 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header bg-primary">
                             <div class="card-title">
-                                <h5 class="font-weight-bold text-uppercase">Gestion des nomenclatures frais</h5>
+                                <h5 class="font-weight-bold text-uppercase">Nomenclatures des frais</h5>
                             </div>
                             <div class="card-tools float-right">
                                 <a data-toggle="modal" data-target="#nouvel_element"
