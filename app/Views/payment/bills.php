@@ -10,9 +10,10 @@
                     </div>
                     <div class="col-sm-12 col-lg-6 border-right">
                         <p>
-                            Consulter les reçus de paiements effectués par les élèves en sélectionnant
-                            une période donnée. 
-                            Notez que vous pouvez aussi filtrer les reçus par section organisée en utilisant le menu déroulant
+                            Consulter les reçus de paiements effectués par les étudiants en sélectionnant
+                            une période donnée.
+                            Notez que vous pouvez aussi filtrer les reçus par section organisée en utilisant le menu
+                            déroulant
                             prévu à cet effet.
                         </p>
                         <?php
@@ -72,15 +73,15 @@
                     <div class="col-sm-12 col-lg-6">
                         <div class="text-center mr-3">
                             <!-- CREATION RAPIDE DEW RECU -->
-                             <p>
-                                Vous avez la possibilité d'encoder rapidement un reçu de paiement sans 
-                                passer par la perception de frais de l'élève. 
+                            <p>
+                                Vous avez la possibilité d'encoder rapidement un reçu de paiement sans
+                                passer par la perception de frais de l'étudiant.
                                 L'encodage rapide de reçu est utile pour les paiements en espèces non numérisés.
                                 Pour ce faire, cliquez sur le bouton ci-dessous.
-                             </p>
+                            </p>
                             <a href="<?= base_url('encodingBillPayment'); ?>" class="btn btn-success">
                                 <i class="fas fa-check-circle"></i>
-                            Encodage rapide des Reçus
+                                Encodage rapide des reçus
                             </a>
                         </div>
                     </div>
@@ -98,9 +99,9 @@
                             <div class="form-floating" style="width: 100%!important;">
                                 <select id="ajax_sections" name="ajax_sections" title="Classe"
                                     class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                                    <option disabled selected>--sélectionnez une section--</option>
+                                    <option disabled selected>--sélectionnez une Faculté--</option>
                                     <?php if (session()->has('reportingtype') && (session()->get('reportingtype') == 'yearly_students')): ?>
-                                    <option value="all">Toutes les sections</option>
+                                    <option value="all">Toutes les Facultés</option>
                                     <?php endif; ?>
                                     <?php
                                             $sections_listing = [];
@@ -126,7 +127,7 @@
                                     <?php endif; ?>
                                 </select>
                                 <label for="ajax_sections" class="text-uppercase font-weight-bold">
-                                    <span class="text-danger">*</span>Sections organisées</label>
+                                    <span class="text-danger">*</span>Facultés</label>
                             </div>
                         </form>
                     </div>
@@ -143,15 +144,15 @@
                                             <th>Reçu</th>
                                             <th>Date</th>
                                             <th>Frais</th>
-                                            <th>Eleve </th>
-                                            <th>Classe </th>
+                                            <th>Etudiant </th>
+                                            <th>Promotion </th>
                                             <th>Statut </th>
                                             <th>Edition</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($bills as $payment) {
+                                        <?php 
+                                        foreach ($bills as $payment) {
                                                     $user_id = session()->has('userid') ? session()->get('userid') : '';
                                                     if (($user_id == $payment['payment_user_id']) or (session()->admin == TRUE) or (session()->all == TRUE)) {
                                                         if (session()->get('choosedsectionid') == $payment['section_id']) {
@@ -247,18 +248,12 @@
                                                 <?= $payment['payment_created_at']; ?>
                                             </td>
                                         </tr>
-                                        <?php }
-                                                    }
-                                                } ?>
-
+                                        <?php } } } ?>
                                     </tbody>
-
                                 </table>
                             </fieldset>
                             <hr>
                         </div>
-
-
                         <?php endif; ?>
                     </div>
                 </div>

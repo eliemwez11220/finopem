@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-lg-12 text-center">
                         <h1 class="font-weight-bold text-uppercase lined lined-center">
-                            <i class="nav-icon fas fa-hand-holding-usd"></i> 
+                            <i class="nav-icon fas fa-hand-holding-usd"></i>
                             ENCODAGE DES PAIEMENTS
                         </h1>
                     </div>
@@ -18,7 +18,7 @@
                                         data-dropdown-css-class="select2-info">
                                         <option disabled selected>--sélectionnez--</option>
                                         <?php if (session()->has('reportingtype') && (session()->get('reportingtype') == 'yearly_students')): ?>
-                                        <option value="all">Toutes les sections</option>
+                                        <option value="all">Toutes les Facultés</option>
                                         <?php endif; ?>
                                         <?php
                                     $sections_listing = [];
@@ -44,7 +44,7 @@
                                         <?php endif; ?>
                                     </select>
                                     <label for="ajax_sections">
-                                        <span class="text-danger">*</span>Sections</label>
+                                        <span class="text-danger">*</span>Facultés</label>
                                 </div>
                             </form>
                         </div>
@@ -58,7 +58,7 @@
                                     <select id="ajax_student" name="ajax_student" title="Eleve"
                                         class="form-control select2 select2-info"
                                         data-dropdown-css-class="select2-info">
-                                        <option disabled selected>--sélectionnez un élève-- </option>
+                                        <option disabled selected>--sélectionnez un étudiant-- </option>
 
                                         <?php $count = 1;
                                 if (isset($studentsinscriptions) && !empty($studentsinscriptions)):
@@ -72,7 +72,7 @@
                                             <?= strtoupper($studentval['student_lastname']); ?>
                                             <?= strtoupper($studentval['student_surname']); ?>
                                             (<?= strtoupper($studentval['student_code']); ?>) |
-                                            
+
                                             <?= strtoupper(trim($studentval['classe_shortname'])); ?>
                                         </option>
                                         <?php endif; ?>
@@ -81,7 +81,7 @@
                                     </select>
                                     <label for="ajax_student" class="font-weight-bold text-uppercase">
                                         <span class="text-danger">*</span>
-                                        élève
+                                        étudiant
                                     </label>
                                 </div>
                             </form>
@@ -89,32 +89,32 @@
                     </div>
                     <div class="col-sm-6 col-lg-4">
                         <?php if(isset($student) && !empty($student)):?>
-                       
-                            <form role="form" id="form_ajax_fees_paid" method="get">
-                                <div class="form-floating input-group" style="width: 100%!important;">
-                                    <label for=""></label>
-                                    <select id="ajax_fees_paid" name="ajax_fees_paid" title="Classe"
-                                        class="form-control select2 select2-info text-uppercase font-weight-bold"
-                                        data-dropdown-css-class="select2-info">
-                                        <option disabled selected>-- sélectionnez le frais-- </option>
 
-                                        <?php $count = 1;
+                        <form role="form" id="form_ajax_fees_paid" method="get">
+                            <div class="form-floating input-group" style="width: 100%!important;">
+                                <label for=""></label>
+                                <select id="ajax_fees_paid" name="ajax_fees_paid" title="Classe"
+                                    class="form-control select2 select2-info text-uppercase font-weight-bold"
+                                    data-dropdown-css-class="select2-info">
+                                    <option disabled selected>-- sélectionnez le frais-- </option>
+
+                                    <?php $count = 1;
                                         if (isset($feespayables) && !empty($feespayables)):
                                         foreach ($feespayables as $key => $value): ?>
-                                        <option value="<?= esc($value['fee_id']); ?>"
-                                            <?= (session()->feepaidid && (session()->feepaidid == $value['fee_id']))?'selected':set_select('ajax_fees_paid', esc($value['fee_id'])); ?>>
-                                            <?= strtoupper($value['fee_name']); ?>
-                                        </option>
-                                        <?php endforeach; ?>
-                                        <?php endif; ?>
-                                    </select>
-                                    <label for="ajax_fees_paid" class="font-weight-bold text-uppercase">
-                                        <span class="text-danger">*</span>
-                                        Frais a perception
-                                    </label>
-                                </div>
-                            </form>
-                        
+                                    <option value="<?= esc($value['fee_id']); ?>"
+                                        <?= (session()->feepaidid && (session()->feepaidid == $value['fee_id']))?'selected':set_select('ajax_fees_paid', esc($value['fee_id'])); ?>>
+                                        <?= strtoupper($value['fee_name']); ?>
+                                    </option>
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </select>
+                                <label for="ajax_fees_paid" class="font-weight-bold text-uppercase">
+                                    <span class="text-danger">*</span>
+                                    Frais a perception
+                                </label>
+                            </div>
+                        </form>
+
                         <?php endif; ?>
                     </div>
                     <?php endif; ?>
@@ -163,11 +163,10 @@
                                     </span>
                                 </div>
                                 <input type="date" name="paydate" class="form-control" value="<?= $paydate; ?>"
-                                    max="<?= date('Y-m-d'); ?>" min="<?= $date_min; ?>"/>
+                                    max="<?= date('Y-m-d'); ?>" min="<?= $date_min; ?>" />
 
                                 <div class="input-group-append ">
-                                    <button type="submit"
-                                        class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-check-circle"></i>Appliquer</button>
                                 </div>
                             </div>
@@ -220,18 +219,18 @@
                                             <th>SOLDE</th>
                                             <th class="bg-info text-center">
                                                 <h5 class="font-weight-bold text-uppercase">
-                                                    PERCEPTION FRAIS AU 
+                                                    PERCEPTION FRAIS AU
                                                     <span class="text-primary">
                                                         <?= setFrenchDays(date("l", strtotime($paydate))); ?>
                                                         <?= date("d/m/Y", strtotime($paydate)); ?>
                                                     </span>
                                                     <?php if(session()->paymenttoken): ?>
-                                                        <a href="<?= base_url('encodingBillPayment'); ?>"
-                                                            class="btn btn-success btn-lg" data-toggle="tooltip"
-                                                            data-placement="top" title="Cliquer pour encoder un autre reçu">
-                                                            <i class="fas fa-check-circle"></i>
-                                                            </span>
-                                                        </a>
+                                                    <a href="<?= base_url('encodingBillPayment'); ?>"
+                                                        class="btn btn-success btn-lg" data-toggle="tooltip"
+                                                        data-placement="top" title="Cliquer pour encoder un autre reçu">
+                                                        <i class="fas fa-check-circle"></i>
+                                                        </span>
+                                                    </a>
 
                                                     <?php endif; ?>
                                                 </h5>
@@ -467,7 +466,8 @@
                                             </td>
                                             <td class="text-center bg-info">
                                                 <?php if($balance_net == 0): ?>
-                                                <a href="<?= base_url('encodingBillPayment'); ?>" class="btn text-center mt-1">
+                                                <a href="<?= base_url('encodingBillPayment'); ?>"
+                                                    class="btn text-center mt-1">
                                                     <span class="h3 text-success font-weight-bold ">
                                                         <i class="far fa-check-circle fa-2x"></i>
                                                     </span>
@@ -483,7 +483,7 @@
                                                     class="mt-1 btn btn-primary btn-lg" data-toggle="tooltip"
                                                     data-placement="top" title="Cliquer pour encoder un autre reçu">
                                                     <i class="fas fa-plus-circle"></i>
-                                                        Numériser un autre reçu
+                                                    Numériser un autre reçu
                                                     </span>
                                                 </a>
                                                 <?php endif; ?>
@@ -500,7 +500,7 @@
                     <div class="col-md-12">
                         <p class="h5  alert alert-light text-danger text-center">
                             <i class="fa fa-info-circle fa-lg"></i>
-                            Désolé,l’élève ne paie pas le frais <span class="font-weight-bold">
+                            Désolé,l’étudiant ne paie pas le frais <span class="font-weight-bold">
                                 <?= session()->feepaidchoosed['fee_name']; ?>
                             </span> que vous avez sélectionné
 
@@ -519,8 +519,7 @@
                 <p class="font-weight-bold text-danger">
                     <i class="fa fa-info-circle fa-lg"></i>
                     Veuillez configurer le taux de change dans le module configuration frais en suivant le lien
-                    ci-dessous
-                    pour percevoir les différents frais concernés
+                    ci-dessous pour percevoir les différents frais concernés
                 </p>
                 <a href="<?= base_url('fees/exchanges'); ?>" class="btn btn-lg btn-info">
                     <span class="btn text-white " data-toggle="tooltip" data-placement="top"

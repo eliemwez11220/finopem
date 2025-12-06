@@ -17,7 +17,7 @@
                                         data-dropdown-css-class="select2-info">
                                         <option disabled selected>--sélectionnez--</option>
                                         <?php if (session()->has('reportingtype') && (session()->get('reportingtype') == 'yearly_students')): ?>
-                                        <option value="all">Toutes les sections</option>
+                                        <option value="all">Toutes les facultés</option>
                                         <?php endif; ?>
                                         <?php
                                     $sections_listing = [];
@@ -43,7 +43,7 @@
                                         <?php endif; ?>
                                     </select>
                                     <label for="ajax_sections">
-                                        <span class="text-danger">*</span>Sections</label>
+                                        <span class="text-danger">*</span>Facultés</label>
                                 </div>
                             </form>
                         </div>
@@ -57,7 +57,7 @@
                                     <select id="ajax_student" name="ajax_student" title="Eleve"
                                         class="form-control select2 select2-info"
                                         data-dropdown-css-class="select2-info">
-                                        <option disabled selected>--sélectionnez un élève-- </option>
+                                        <option disabled selected>--sélectionnez un étudiant-- </option>
 
                                         <?php $count = 1;
                                 if (isset($studentsinscriptions) && !empty($studentsinscriptions)):
@@ -80,7 +80,7 @@
                                     </select>
                                     <label for="ajax_student" class="font-weight-bold text-uppercase">
                                         <span class="text-danger">*</span>
-                                        élève
+                                        étudiant
                                     </label>
                                 </div>
                             </form>
@@ -506,7 +506,7 @@
                     <div class="col-md-12">
                         <p class="h5  alert alert-light text-danger text-center">
                             <i class="fa fa-info-circle fa-lg"></i>
-                            Désolé,l’élève ne paie pas le frais <span class="font-weight-bold">
+                            Désolé, cet étudiant ne paie pas le frais <span class="font-weight-bold">
                                 <?= session()->feepaidchoosed['fee_name']; ?>
                             </span> que vous avez sélectionné
 
@@ -525,8 +525,7 @@
                 <p class="font-weight-bold text-danger">
                     <i class="fa fa-info-circle fa-lg"></i>
                     Veuillez configurer le taux de change dans le module configuration frais en suivant le lien
-                    ci-dessous
-                    pour percevoir les différents frais concernés
+                    ci-dessous pour percevoir les différents frais concernés
                 </p>
                 <a href="<?= base_url('fees/exchanges'); ?>" class="btn btn-lg btn-info">
                     <span class="btn text-white " data-toggle="tooltip" data-placement="top"
@@ -681,7 +680,6 @@
                                         </tr>
                                         <?php } ?>
                                     </tbody>
-
                                 </table>
                             </fieldset>
                             <hr>

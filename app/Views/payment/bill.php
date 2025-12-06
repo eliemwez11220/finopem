@@ -65,7 +65,7 @@
                                 </span>
                                 <br>
                                 <span class="text-uppercase small font-weight-bold">
-                                    <b>Année scolaire 
+                                    <b>Année 
                                         <?= (session()->schoolyear) ? session()->schoolyear : ''; ?>
                                         
                                     </b>
@@ -74,11 +74,11 @@
 
 
                             <p class="h5 text-uppercase border py-3 text-center">
-                                <b>Elève : <?= esc($bill['student_firstname']); ?>
+                                <b>Etudiant : <?= esc($bill['student_firstname']); ?>
                                     <?= esc($bill['student_lastname']); ?>
                                     <?= esc($bill['student_surname']); ?>
                                     <br>
-                                    Classe:
+                                    Promotion:
                                     <?= (!empty($bill['classe_shortname'])) ? $bill['classe_shortname']:$bill['degree_shortname'].' '.($bill['classe_subname']).' '.($bill['option_name']); ?>
                                 </b>
                             </p>

@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title> <?= (isset($title)) ? $title : ' Tableau de bord '; ?> | Magschool</title>
+    <title> <?= (isset($title)) ? $title : ' Tableau de bord '; ?> | FINOPEM</title>
 
     <link rel="icon" type="image/png" href="<?= base_url('public/img/logo/favicon.png'); ?>" />
 
@@ -140,7 +140,7 @@
                                     <?= date("d/m/Y H:i:s", strtotime($bill['payment_created_at'])); ?>
                                 </strong>
                                 <br>
-                                <b>Année scolaire <?= (session()->schoolyear) ? session()->schoolyear : ''; ?></b>
+                                <b>Année <?= (session()->schoolyear) ? session()->schoolyear : ''; ?></b>
                             </address>
 
                         </div>
@@ -148,11 +148,11 @@
                     <div class="row invoice-info">
                         <div class="col-sm-12">
                             <address class="text-uppercase">
-                                <b>Elève : <?= esc($bill['student_firstname']); ?>
+                                <b>Etudiant : <?= esc($bill['student_firstname']); ?>
                                     <?= esc($bill['student_lastname']); ?>
                                     <?= esc($bill['student_surname']); ?>
                                     <br>
-                                    Classe:
+                                    Promotion:
                                     <?= (!empty($bill['classe_shortname'])) ? $bill['classe_shortname']:$bill['degree_shortname'].' '.($bill['classe_subname']).' '.($bill['option_name']); ?>
                                 </b>
                             </address>
