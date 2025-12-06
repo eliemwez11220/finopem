@@ -2,9 +2,9 @@
     <div class="form-floating input-group" style="width: 100%!important;">
         <select id="ajax_sections" name="ajax_sections" title="Classe" class="form-control select2 select2-info"
             data-dropdown-css-class="select2-info">
-            <option disabled selected>--sélectionnez une section--</option>
+            <option disabled selected>--sélectionnez--</option>
             <?php if (session()->has('reportingtype') && (session()->get('reportingtype') == 'yearly_students')): ?>
-                <option value="all">Toutes les sections</option>
+                <option value="all">Toutes les sections(facultés)</option>
             <?php endif; ?>
             <?php
             $sections_listing = [];
@@ -32,6 +32,6 @@
             <?php endif; ?>
         </select>
         <label for="ajax_sections">
-            <span class="text-danger">*</span>Sections organisées</label>
+            <span class="text-danger">*</span>Sections (facultés)</label>
     </div>
 </form>

@@ -13,10 +13,10 @@
                     
                     <div class="text-center shadow-lg" style="border:2px solid black">
                         <h1 class="text-uppercase font-weight-bold">
-                            Liste des élèves inscrits en <?= session()->schoolyear; ?>
+                            Liste des étudiants inscrits en <?= session()->schoolyear; ?>
                         </h1>
                         <h3 class="text-uppercase">
-                        <b>Classe:
+                        <b>Promotion:
                             <?= (session()->has('choosedclassename')) ? session()->choosedclassename : 'Générale'; ?>
                         </b>
                     </h3>
@@ -28,7 +28,7 @@
                             <thead>
                                 <tr class="text-uppercase small">
                                     <th>#</th>
-                                    <th>Classe</th>
+                                    <th>Promotion</th>
                                     <th>Matricule</th>
                                     <th>Nom</th>
                                     <th>Postnom</th>

@@ -22,13 +22,13 @@ $url3 = ($totalSegments >= 3) ? $uri->getSegment(3) : '';
                         <div class="form-floating input-group" style="width: 100%!important;">
                             <select id="ajax_students_classes" name="ajax_students_classes" title="Classe"
                                 class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                                <option disabled selected>--Selectionnez une classe--</option>
+                                <option disabled selected>--Selectionnez une promotion--</option>
 
                                 <?php
                                 if (session()->has('choosedsectionid')):
                                     if (isset($classes) && !empty($classes)):
                                         ?>
-                                        <option value="all">Toutes les classes</option>
+                                        <option value="all">Toutes les promotion</option>
                                         <?php foreach ($classes as $key => $classeval):
                                             if ($classeval['section_id'] == session()->get('choosedsectionid')):
                                                 ?>
@@ -46,7 +46,7 @@ $url3 = ($totalSegments >= 3) ? $uri->getSegment(3) : '';
                                 <?php endif; ?>
                             </select>
                             <label for="ajax_students_classes" class="font-weight-bold">
-                                <span class="text-danger">*</span>Classe des élèves
+                                <span class="text-danger">*</span>Promotions
                             </label>
                         </div>
                     </form>

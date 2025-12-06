@@ -10,10 +10,10 @@
         <div class="container-fluid">
             <div class="shadow-lg text-center" style="border:2px solid black">
                 <h1 class="text-uppercase font-weight-bold">
-                    Contacts parents - <?= session()->schoolyear; ?>
+                    Contacts étudiants - <?= session()->schoolyear; ?>
                 </h1>
                 <h3 class="text-uppercase">
-                    <b>élèves de la
+                    <b>étudiants de
                         <?= (session()->choosedclassename) ? session()->choosedclassename : 'Générale'; ?>
                     </b>
                 </h3>

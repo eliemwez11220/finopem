@@ -468,7 +468,7 @@
                                                 
                                            
                                                 <p class="badge badge-danger text-uppercase font-weight-bold h5">
-                                                    Aujoud'hui, vous avez perçu pour cet élève, une somme de 
+                                                    Aujoud'hui, vous avez perçu pour cet étudiant, une somme de 
                                                     <?= number_format($total_daily_paid, 2, ',', ' ').' '.$currency; ?>
                                                 </p>
                                                 <br>
@@ -480,15 +480,16 @@
                                                 </a>
                                                 <?php else: ?>
                                                 <button type="submit"
-                                                    class="mt-1 btn btn-outline-light btn-lg text-uppercase font-weight-bold">
+                                                    class="mt-1 btn btn-outline-light btn-sm text-uppercase font-weight-bold">
                                                     <i class="far fa-check-circle"></i>
                                                     Valider le paiement
                                                 </button>
                                                 <?php if(session()->paymenttoken): ?>
                                                 <a href="<?= base_url('payment/printbill/' . session()->paymenttoken); ?>"
-                                                    class="mt-1 btn btn-primary btn-lg" data-toggle="tooltip"
+                                                    class="mt-1 btn btn-primary btn-sm" data-toggle="tooltip"
                                                     data-placement="top" title="Cliquer pour imprimer le reçu">
                                                     <i class="fas fa-print fa-lg"></i>
+                                                    Imprimer le reçu
                                                     </span>
                                                 </a>
                                                 <?php endif; ?>
@@ -562,6 +563,7 @@
                                             <th>RENDU</th>
                                             <th>TAUX </th>
                                             <th>STATUT </th>
+                                            <th>MODE </th>
                                             <th>NOTES </th>
 
                                         </tr>
@@ -585,6 +587,7 @@
                                         
                                         $fee_payable = $payment['feedetail_cost_payable'];
                                         
+                                        $mode = $payment['payment_type'];
                                         $notes = $payment['payment_notes'];
                                         $status = (!empty(($payment['paydetails_status'])) ? ($payment['paydetails_status']) : 'inactif');
                                                    
@@ -671,6 +674,11 @@
                                                 <span
                                                     class="badge  <?= (esc($status) == 'actif') ? 'badge-success' : 'badge-danger'; ?> text-capitalize">
                                                     <?= ($status == 'actif') ? 'Validé':'Annulé'; ?> </span>
+                                            </td>
+                                            <td class="font-weight-bold text">
+                                                <span class="text-uppercase small">
+                                                    <?= $mode; ?>
+                                                </span>
                                             </td>
                                             <td class="font-weight-bold text">
                                                 <span class="text-uppercase small">
