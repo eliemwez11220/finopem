@@ -31,7 +31,7 @@
                                 <tr class="text-uppercase small">
                                     <th>#</th>
                                     <th>Matricule</th>
-                                    <th>Nom élève</th>
+                                    <th>Nom étudiant</th>
                                     <th>Sexe</th>
                                     <?php if (!session()->has('choosedclassename')): ?>
                                         <th>Classe</th>

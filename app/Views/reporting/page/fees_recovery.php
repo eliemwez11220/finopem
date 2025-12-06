@@ -49,7 +49,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-xs-12 mb-2">
                                 <blockquote>
-                                    <p class="text-dark">La situation annuelle de paiement de l’élève
+                                    <p class="text-dark">La situation annuelle de paiement de l’étudiant
 
                                         [<span class="text-primary text-uppercase font-weight-bold">
                                             <?= strtoupper($student['student_firstname']); ?>

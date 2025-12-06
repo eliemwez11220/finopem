@@ -6,8 +6,8 @@
                     
                     <select id="ajax_student_reporting" name="ajax_student_reporting" title="Eleve"
                         class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                        <option disabled selected>--sélectionnez un élève-- </option>
-                        <option value="all">Tous les élèves</option>
+                        <option disabled selected>--sélectionnez un étudiant-- </option>
+                        <option value="all">Tous les étudiants</option>
                         <?php $students_listing = array();
                             if (session()->has('studentsclasses')) {
 
@@ -45,7 +45,7 @@
                         <?php endif; ?>
                     </select>
                     <label for="ajax_student_reporting" class="text-capitalize">
-                        <span class="text-danger">*</span>élèves</label>
+                        <span class="text-danger">*</span>étudiants</label>
                 </div>
             </form>
         </blockquote>
@@ -71,7 +71,7 @@
                     <h3 class="text-uppercase font-weight-bold py-3">
                         <span class="text-primary small font-weight-bold">
                             <?= setReporting(session()->get('reportingtype'), "Communiqué de conformisation d'inscription "); ?>
-                            <br>Dossier élève No <?= $student['student_code']; ?>
+                            <br>Dossier étudiant No <?= $student['student_code']; ?>
                         </span>
                     </h3>
                 </div>
@@ -119,20 +119,20 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><i class="fas fa-arrow-right"></i> Nom élève</td>
+                                    <td><i class="fas fa-arrow-right"></i> Nom étudiant</td>
                                     <td class="text-uppercase font-weight-bold">
                                         <?= (trim($student['student_firstname'])); ?>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td><i class="fas fa-arrow-right"></i> Postnom élève</td>
+                                    <td><i class="fas fa-arrow-right"></i> Postnom étudiant</td>
                                     <td class="text-uppercase font-weight-bold">
                                         <?= (trim($student['student_lastname'])); ?>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><i class="fas fa-arrow-right"></i> Prenom élève</td>
+                                    <td><i class="fas fa-arrow-right"></i> Prenom étudiant</td>
                                     <td class="text-uppercase font-weight-bold">
                                         <?= (trim($student['student_surname'])); ?>
                                     </td>
@@ -373,7 +373,7 @@
                         <h3 class="text-uppercase font-weight-bold py-3">
                             <span class="text-primary small font-weight-bold">
                                 <?= setReporting(session()->get('reportingtype'), "Communiqué de conformisation d'inscription "); ?>
-                                <br> Dossier élève No <?= $student['student_code']; ?>
+                                <br> Dossier étudiant No <?= $student['student_code']; ?>
                             </span>
                         </h3>
                     </div>
@@ -421,20 +421,20 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><i class="fas fa-arrow-right"></i> Nom élève</td>
+                                            <td><i class="fas fa-arrow-right"></i> Nom étudiant</td>
                                             <td class="text-uppercase font-weight-bold">
                                                 <?= trim($student['student_firstname']); ?>
                                             </td>
                                         </tr>
 
                                         <tr>
-                                            <td><i class="fas fa-arrow-right"></i> Postnom élève</td>
+                                            <td><i class="fas fa-arrow-right"></i> Postnom étudiant</td>
                                             <td class="text-uppercase font-weight-bold">
                                                 <?= trim($student['student_lastname']); ?>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><i class="fas fa-arrow-right"></i> Prenom élève</td>
+                                            <td><i class="fas fa-arrow-right"></i> Prenom étudiant</td>
                                             <td class="text-uppercase font-weight-bold">
                                                 <?= trim($student['student_surname']); ?>
                                             </td>

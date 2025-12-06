@@ -13,7 +13,7 @@
                             <i id="hide_status" class="fas fa-<?= (session()->has('status_reporting') && (session()->get('status_reporting') == 'hide')) ? 'eye' : 'eye-slash'; ?>"></i>
                             <span id="hide_info">
                                 <?= (session()->has('status_reporting') && (session()->get('status_reporting') == 'hide')) ? 'Afficher' : 'Masquer'; ?>
-                                le matricule élève
+                                le matricule étudiant
                             </span>
                         </button>
                     </div>
@@ -28,7 +28,7 @@
                     <div class="col-12 col-sm-12 col-lg-12 col-md-12">
                         <div class="text-center shadow-lg py-3 mb-2" style="border:2px solid black">
                             <h1 class="text-uppercase font-weight-bold h3">
-                                Liste des élèves inscrits en <?= session()->get('choosedclassename'); ?>
+                                Liste des étudiants inscrits en <?= session()->get('choosedclassename'); ?>
                             </h1>
                         </div>
 
@@ -119,7 +119,7 @@
                                         <!-- ====== End Reporting Header -->
                                         <div class="text-center shadow-lg py-3 mb-2" style="border:2px solid black">
                                             <h1 class="text-uppercase font-weight-bold h3">
-                                                Liste des élèves inscrits en
+                                                Liste des étudiants inscrits en
 
                                                 <?= setDegresLevels($classe['degree_code'], 'f'); ?>
                                                 <?= trim($classe['classe_subname']); ?>

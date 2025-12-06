@@ -6,8 +6,8 @@
 
                     <select id="ajax_student_reporting" name="ajax_student_reporting" title="Eleve"
                         class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                        <option disabled selected>--sélectionnez un élève-- </option>
-                        <option value="all">Tous les élèves</option>
+                        <option disabled selected>--sélectionnez un étudiant-- </option>
+                        <option value="all">Tous les étudiants</option>
                         <?php $students_listing = array();
                         if (session()->has('studentsclasses')) {
 
@@ -46,7 +46,7 @@
                         <?php endif; ?>
                     </select>
                     <label for="ajax_student_reporting" class="text-capitalize">
-                        <span class="text-danger">*</span>élèves</label>
+                        <span class="text-danger">*</span>étudiants</label>
                 </div>
             </form>
         </blockquote>
@@ -104,7 +104,7 @@
                     Lubumbashi 1
                 </h4>
                 <h4 class="text-uppercase font-weight-bold">
-                    Identification de l'élève
+                    Identification de l'étudiant
                 </h4>
             </div>
         </div>
@@ -125,7 +125,7 @@
                         <tbody class="text-uppercase">
                             <tr>
                                 <td>No</td>
-                                <td>Numéro élève</td>
+                                <td>Numéro étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_sernie_id']); ?>
                                 </td>
@@ -146,21 +146,21 @@
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Nom élève</td>
+                                <td>Nom étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_firstname']); ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Postnom élève</td>
+                                <td>Postnom étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_lastname']); ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>Prénom élève</td>
+                                <td>Prénom étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_surname']); ?>
                                 </td>
@@ -306,7 +306,7 @@
                             </tr>
                             <tr>
                                 <td>22</td>
-                                <td>Etat élève</td>
+                                <td>Etat étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_status']); ?>
                                 </td>
@@ -373,7 +373,7 @@
                     Lubumbashi 1
                 </h4>
                 <h4 class="text-uppercase font-weight-bold">
-                    Identification de l'élève
+                    Identification de l'étudiant
                 </h4>
             </div>
         </div>
@@ -393,7 +393,7 @@
                         <tbody class="text-uppercase">
                             <tr>
                                 <td>No</td>
-                                <td>Numéro élève</td>
+                                <td>Numéro étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_sernie_id']); ?>
                                 </td>
@@ -414,21 +414,21 @@
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Nom élève</td>
+                                <td>Nom étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_firstname']); ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Postnom élève</td>
+                                <td>Postnom étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_lastname']); ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>Prénom élève</td>
+                                <td>Prénom étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_surname']); ?>
                                 </td>
@@ -574,7 +574,7 @@
                             </tr>
                             <tr>
                                 <td>22</td>
-                                <td>Etat élève</td>
+                                <td>Etat étudiant</td>
                                 <td class="text-uppercase font-weight-bold">
                                     <?= trim($student['student_status']); ?>
                                 </td>

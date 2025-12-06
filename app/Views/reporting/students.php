@@ -7,7 +7,7 @@
     <section class="content <?= checkModuleAccess('repstudents'); ?>">
         <div class="container-fluid">
             <h1 class="font-weight-bold text-uppercase text-center printoff">
-                <i class="nav-icon fas fa-users"></i> Registre des élèves
+                <i class="nav-icon fas fa-users"></i> Registre des étudiants
             </h1>
             <?php if (session()->has('choosedclassename')): ?>
                 <div class="row">
@@ -17,7 +17,7 @@
                         <!-- ====== End Reporting Header -->
                         <div class="text-center shadow-lg py-3 mb-2" style="border:2px solid black">
                             <h1 class="text-uppercase font-weight-bold h3">
-                                Registre des élèves inscrits en <?= session()->get('choosedclassename'); ?>
+                                Registre des étudiants inscrits en <?= session()->get('choosedclassename'); ?>
                             </h1>
                         </div>
 
@@ -119,7 +119,7 @@
                                             <!-- ====== End Reporting Header -->
                                             <div class="text-center shadow-lg py-3 mb-2" style="border:2px solid black">
                                                 <h1 class="text-uppercase font-weight-bold h3">
-                                                    Registre des élèves inscrits en
+                                                    Registre des étudiants inscrits en
 
                                                     <?= setDegresLevels($classe['degree_code'], 'f'); ?>
                                                     <?= trim($classe['classe_subname']); ?>

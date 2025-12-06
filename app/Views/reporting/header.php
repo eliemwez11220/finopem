@@ -50,19 +50,19 @@
                 <div class="text-left">
                     <span class="text-uppercase">
                         <b>
-                            Année scolaire :
+                            Année :
                             <?= (session()->has('schoolyear')) ? session()->get('schoolyear') : '-'; ?>
                         </b>
                     </span>
                     <br>
                     <span class="text-uppercase <?= (session()->has('choosedsectionname')) ? '': 'd-none'; ?>">
-                        <b>Section:
+                        <b>Faculté:
                             <?= (session()->has('choosedsectionname')) ? session()->get('choosedsectionname') : '-'; ?>
                         </b>
                     </span>
                     <br>
                     <span class="text-uppercase <?= (session()->has('choosedclassename')) ? '': 'd-none'; ?>">
-                        <b>Classe:
+                        <b>Promotion:
                             <?= (session()->has('choosedclassename')) ? session()->get('choosedclassename') : '-'; ?>
                         </b>
                     </span>

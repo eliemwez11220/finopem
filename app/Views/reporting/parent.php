@@ -16,7 +16,7 @@
             </div>
             <div class="shadow-lg text-center" style="border:2px solid black">
                 <h1 class="text-uppercase font-weight-bold">
-                    Contacts parents - <?= session()->schoolyear; ?>
+                    Contacts etudiants - <?= session()->schoolyear; ?>
                 </h1>
             </div>
             <div class="card">

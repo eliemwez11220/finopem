@@ -19,7 +19,7 @@
                     <div class="shadow-lg text-center" style="border:2px solid black">
                         <h3 class="text-uppercase font-weight-bold py-3">
                             <span class="text-primary">
-                                <?= setReporting(session()->get('reportingtype'), "Communiqué de paiement élève"); ?>
+                                <?= setReporting(session()->get('reportingtype'), "Communiqué de paiement étudiant"); ?>
                                 <?= reportingReferenceNumber(); ?>
                             </span>
                         </h3>
@@ -32,7 +32,7 @@
                             <blockquote>
                                 <p class="text-dark">Chers parents,
                                     conformément aux données de notre application de gestion de frais scolaires,
-                                    la situation annuelle de paiement de l’élève
+                                    la situation annuelle de paiement de l’étudiant
 
                                     [<span class="text-primary text-uppercase font-weight-bold">
                                         <?= trim($student['student_firstname']); ?>
@@ -254,7 +254,7 @@
                             </fieldset>
                             <hr>
                             <p class="font-weight-bold">
-                                Pour éviter d’inquiéter les élèves pendant la période d’examen de fin
+                                Pour éviter d’inquiéter les étudiants pendant la période d’examen de fin
                                 d’année qui arrive bientôt, nous vous prions de vous acquitter des frais
                                 restants dans le délai.
                             </p>

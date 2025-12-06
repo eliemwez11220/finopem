@@ -89,7 +89,7 @@
                                         
                                         <div class="info-box-content">
                                             <span class="info-box-text font-weight-bold text-uppercase">
-                                                élèves inscrits</span>
+                                                étudiants inscrits</span>
                                         </div>
                                         <span class="info-box-icon bg-info elevation-1">
                                             <?= $students_section; ?>
@@ -171,7 +171,7 @@
                 <div class="shadow-lg text-center" style="border:2px solid black">
                 <h3 class="text-uppercase font-weight-bold py-3">
                     <span class="text-primary small font-weight-bold">
-                        <?= setReporting(session()->get('reportingtype'), "Effectifs annuel des élèves"); ?> -
+                        <?= setReporting(session()->get('reportingtype'), "Effectifs annuel des étudiants"); ?> -
                         <?= session()->schoolyear; ?>
 
                         <b class="<?= (session()->has('choosedsectionname')) ? '' : 'd-none'; ?>">
@@ -320,7 +320,7 @@
                 <div class="shadow-lg text-center mb-3" style="border:2px solid black">
                     <h3 class="text-uppercase font-weight-bold py-3">
                         <span class="text-primary small font-weight-bold">
-                            <?= setReporting(session()->get('reportingtype'), "effectif global des élèves inscrits"); ?>
+                            <?= setReporting(session()->get('reportingtype'), "effectif global des étudiants inscrits"); ?>
                         </span>
                     </h3>
                 </div>
@@ -368,7 +368,7 @@
                                        
                                         <div class="info-box-content">
                                             <span class="info-box-text font-weight-bold text-uppercase">
-                                                élèves inscrits</span>
+                                                étudiants inscrits</span>
                                         </div>
                                         <span class="info-box-icon bg-info elevation-1">
                                             <?= $section_total; ?>
@@ -486,7 +486,7 @@
                         <div class="shadow-lg text-center" style="border:2px solid black">
                             <h3 class="text-uppercase font-weight-bold py-3">
                                 <span class="text-primary small font-weight-bold">
-                                    <?= setReporting(session()->get('reportingtype'), "effectif des élèves"); ?>
+                                    <?= setReporting(session()->get('reportingtype'), "effectif des étudiants"); ?>
                                     <b> de la section <?= $allsecvalue['section_name']; ?> </b>
                                 </span>
                             </h3>

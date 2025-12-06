@@ -54,7 +54,7 @@
                                 <tbody>
                                     <tr class="small text-uppercase">
                                         <th>#</th>
-                                        <th>Identité élève</th>
+                                        <th>Identité étudiant</th>
                                         <?php for ($ifees = 1; $ifees <= $fees_counter; $ifees++) { ?>
                                             <th class="text-center small"><b>Montant</b></th>
                                             <th class="text-center small"><b>Bourse</b></th>
@@ -237,7 +237,7 @@
                     <div class="text-primary text-center">
                         <div class="text-uppercase ">
                             <h3 class="small font-weight-bold">
-                                La classe choisie n'a aucun élève inscrit. Sélectionnez une autre classe
+                                La classe choisie n'a aucun étudiant inscrit. Sélectionnez une autre classe
                             </h3>
                         </div>
                     </div>

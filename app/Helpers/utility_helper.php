@@ -520,7 +520,7 @@ function setModulesFeatures($feature = null, $module = null)
         'configfees' => ($module == 'fees') ? 'Nomenclature frais' : '',
         'classesfees' => ($module == 'fees') ? 'Configuration details frais' : '',
         'exemptions' => ($module == 'fees') ? 'Configuration exhonerations' : '',
-        'scholarships' => ($module == 'fees') ? 'Configuration Bourses élèves' : '',
+        'scholarships' => ($module == 'fees') ? 'Configuration Bourses étudiants' : '',
         'exchanges' => ($module == 'fees') ? 'Configuration taux de change' : '',
         'payments' => ($module == 'fees') ? 'Perception frais' : '',
         'bills' => ($module == 'fees') ? 'Reçus de paiements' : '',
@@ -558,20 +558,20 @@ function setModulesFeatures($feature = null, $module = null)
         //REPORTING
         'repparents' => ($module == 'reporting') ? 'Contacts parents' : '',
         'repannuary' => ($module == 'reporting') ? 'Annuaires parents' : '',
-        'replisting' => ($module == 'reporting') ? 'Listes des élèves' : '',
-        'repstudents' => ($module == 'reporting') ? 'Registres des élèves' : '',
+        'replisting' => ($module == 'reporting') ? 'Listes des étudiants' : '',
+        'repstudents' => ($module == 'reporting') ? 'Registres des étudiants' : '',
         'reppayments' => ($module == 'reporting') ? 'Versements frais' : '',
         'repcashbox' => ($module == 'reporting') ? 'Journal caisses' : '',
         'reprecovery' => ($module == 'reporting') ? 'Recouvrement frais' : '',
         'repfees' => ($module == 'reporting') ? 'Perception globale frais' : '',
         'repusersfees' => ($module == 'reporting') ? 'Perception frais par agent' : '',
         'repbanking' => ($module == 'reporting') ? 'Transactions bancaires' : '',
-        'repyearly' => ($module == 'reporting') ? "Statistiques des effectifs élèves" : '',
+        'repyearly' => ($module == 'reporting') ? "Statistiques des effectifs étudiants" : '',
 
         //TOOLS
         'exports' => ($module == 'tools') ? 'Exportation de données' : '',
         'expparents' => ($module == 'tools') ? 'Exportation des parents' : '',
-        'expstudents' => ($module == 'tools') ? 'Exportation des élèves' : '',
+        'expstudents' => ($module == 'tools') ? 'Exportation des étudiants' : '',
         'help' => ($module == 'tools') ? 'Assistance technique' : '',
         'events' => ($module == 'tools') ? 'Calendrier événementiel' : '',
         'notifications' => ($module == 'tools') ? 'Notifications' : '',
@@ -930,7 +930,7 @@ function setCourseType($nametype = null)
 function setReporting($nametype = null, $title = null)
 {
     $types_values_faqs = array(
-        'fees_students' => (!empty($title)) ? $title : 'Communiqué de la situation de paiement frais par élève',
+        'fees_students' => (!empty($title)) ? $title : 'Communiqué de la situation de paiement frais par étudiant',
         //'fees_classes' => (!empty($title)) ? $title : 'Communiqué de la situation de paiement frais par classe',
         'student_identity' => (!empty($title)) ? $title : "Communiqué de confirmation des données d'inscription",
         'fees_recovery' => (!empty($title)) ? $title : 'Recouvrement frais de la situation globale de paiement',
@@ -941,10 +941,10 @@ function setReporting($nametype = null, $title = null)
         'student_payment' => (!empty($title)) ? $title : 'Suivi de la situation globale de paiement frais',
         'exemptions' => (!empty($title)) ? $title : 'Exhonérations Frais',
 
-        'student_serni' => (!empty($title)) ? $title : "Fiche serni d'identification des élèves",
-        'yearly_students' => (!empty($title)) ? $title : "Statistiques sur effectif des élèves",
+        'student_serni' => (!empty($title)) ? $title : "Fiche serni d'identification des étudiants",
+        'yearly_students' => (!empty($title)) ? $title : "Statistiques sur effectif des étudiants",
         'phone_annuary' => (!empty($title)) ? $title : "Annuaire téléphonique des parents",
-        'school_annuary' => (!empty($title)) ? $title : "Annuaire scolaire des élèves",
+        'school_annuary' => (!empty($title)) ? $title : "Annuaire scolaire des étudiants",
     );
     if (!empty($nametype)) {
         $value_text = "";
@@ -1017,7 +1017,7 @@ function incidentsTypes($nametype = null)
             "Tapage",
             "Mensonge",
             "Intrusion",
-            "Élève non autorisé",
+            "étudiant non autorisé",
             "Cris dans les couloirs",
             "Usurpation d'identité",
             "Attitude déplacée (gestes, propos à connotation sexuelle, etc.)",
@@ -1050,7 +1050,7 @@ function setStudentsBehaviors($nametype = null)
             "Suit les consignes en classe",
             "Respecte le matériel scolaire",
             "Est ponctuel(le) et assidu(e)",
-            "Respecte les autres élèves et les adultes"
+            "Respecte les autres étudiants et les adultes"
         ],
         "Attitude en classe" => [
             "Participe activement aux cours",
@@ -1120,8 +1120,8 @@ function setSanctionsTypes($nametype = null)
         "Sanctions alternatives ou éducatives" => [
             "Lettre d’excuse",
             "Travail de réparation",
-            "Engagement écrit de l’élève",
-            "Médiation avec un adulte ou un élève",
+            "Engagement écrit de l’étudiant",
+            "Médiation avec un adulte ou un étudiant",
             "Stage d'observation ou citoyen"
         ]
     ];

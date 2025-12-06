@@ -6,7 +6,7 @@
 
                     <select id="ajax_student_reporting" name="ajax_student_reporting" title="Eleve"
                         class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                        <option disabled selected>--sélectionnez un élève-- </option>
+                        <option disabled selected>--sélectionnez un étudiant-- </option>
 
                         <?php $students_listing = [];
                         if (session()->has('studentsclasses')) {
@@ -28,7 +28,7 @@
                         if (!empty($students_listing) && ($students_listing != 'none')):
 
                         ?>
-                            <option value="all">Tous les élèves</option>
+                            <option value="all">Tous les étudiants</option>
                             <?php foreach ($students_listing as $key => $studentval):
                                 $branch_access = session()->has('choosedsectionid') ? session()->get('choosedsectionid') : '';
                                 if (($branch_access == $studentval['section_id'])):
@@ -51,7 +51,7 @@
 
                     </select>
                     <label for="ajax_student_reporting" class="text-capitalize">
-                        <span class="text-danger">*</span>élèves</label>
+                        <span class="text-danger">*</span>étudiants</label>
                 </div>
             </form>
         </blockquote>
@@ -78,7 +78,7 @@
                 <div class="shadow-lg text-center" style="border:2px solid black">
                     <h3 class="text-uppercase font-weight-bold py-3">
                         <span class="text-primary">
-                            <?= setReporting(session()->get('reportingtype'), "Communiqué de paiement élève"); ?>
+                            <?= setReporting(session()->get('reportingtype'), "Communiqué de paiement étudiant"); ?>
                             <?= reportingReferenceNumber(); ?>
                         </span>
                     </h3>
@@ -90,7 +90,7 @@
                             <p class="text-dark">Chers parents,
                                 <u><b>sauf erreur ou omission de notre part</b></u>,
                                 conformément aux données de notre application de gestion de frais,
-                                la situation annuelle de paiement de l’élève
+                                la situation annuelle de paiement de l’étudiant
 
                                 [<span class="text-primary text-uppercase font-weight-bold">
                                     <?= trim($student['student_firstname']); ?>
@@ -310,7 +310,7 @@
                         </fieldset>
                         <hr>
                         <p class="font-weight-bold">
-                            NB : Pour éviter d’inquiéter les élèves pendant le recouvrement,
+                            NB : Pour éviter d’inquiéter les étudiants pendant le recouvrement,
                             nous vous prions de vous acquitter des frais
                             restants dans le délai.
                         </p>
@@ -320,7 +320,7 @@
                             <li>Nous vous informons que le paiement anticipatif est accepté au sein de l'école.</li>
                             <li>En cas de réclamation, veuillez passer à la direction de l’école avec les reçus
                                 imprimés, le bordereau de versement ou autre pièce justificative pour
-                                harmoniser la situation de l'élève.</li>
+                                harmoniser la situation de l'étudiant.</li>
                         </ul>
 
                         <p class="text-center">Franche collaboration.</p>
@@ -366,7 +366,7 @@
                                 <div class="shadow-lg text-center" style="border:2px solid black">
                                     <h3 class="text-uppercase font-weight-bold py-3">
                                         <span class="text-primary">
-                                            <?= setReporting(session()->get('reportingtype'), "Communiqué de paiement élève"); ?>
+                                            <?= setReporting(session()->get('reportingtype'), "Communiqué de paiement étudiant"); ?>
                                             <?= reportingReferenceNumber(); ?>
                                         </span>
                                     </h3>
@@ -380,7 +380,7 @@
                                             <p class="text-dark">Chers parents,
                                                 <u><b>sauf erreur ou omission de notre part</b></u>,
                                                 conformément aux données de notre application de gestion de frais,
-                                                la situation annuelle de paiement de l’élève
+                                                la situation annuelle de paiement de l’étudiant
 
                                                 [<span class="text-primary text-uppercase font-weight-bold">
                                                     <?= trim($student['student_firstname']); ?>
@@ -605,7 +605,7 @@
                                         </fieldset>
                                         <hr>
                                         <p class="font-weight-bold">
-                                            NB : Pour éviter d’inquiéter les élèves pendant le recouvrement,
+                                            NB : Pour éviter d’inquiéter les étudiants pendant le recouvrement,
                                             nous vous prions de vous acquitter des frais
                                             restants dans le délai.
                                         </p>
@@ -615,7 +615,7 @@
                                             <li>Nous vous informons que le paiement anticipatif est accepté au sein de l'école.</li>
                                             <li>En cas de réclamation, veuillez passer à la direction de l’école avec les reçus
                                                 imprimés, le bordereau de versement ou autre pièce justificative pour
-                                                harmoniser la situation de l'élève.</li>
+                                                harmoniser la situation de l'étudiant.</li>
                                         </ul>
                                         <p class="text-center">Franche collaboration.</p>
                                     </div>

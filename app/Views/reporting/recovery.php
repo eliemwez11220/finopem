@@ -246,7 +246,7 @@
                     <div class="text-primary text-center">
                         <div class="text-uppercase ">
                             <h3 class="small font-weight-bold">
-                                La classe choisie n'a aucun élève inscrit. Sélectionnez une autre classe
+                                La classe choisie n'a aucun étudiant inscrit. Sélectionnez une autre classe
                             </h3>
                         </div>
                     </div>
