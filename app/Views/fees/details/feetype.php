@@ -31,7 +31,7 @@
                         <div class="card-header bg-info text-center">
                             <h1 class="text-uppercase font-weight-bold">
                                 <span class="font-weight-bold h3">
-                                    Details Configuration
+                                Détails Configuration
                                 </span>
 
                                 <span class="text-primary h3 font-weight-bold">

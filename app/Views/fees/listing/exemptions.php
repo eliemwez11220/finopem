@@ -32,7 +32,7 @@
                         <div class="card-header">
                             <div class="card-title">
                                 <h5 class="font-weight-bold text-uppercase">
-                                    Gestion des Exhonérations et Bourses</h5>
+                                    Gestion des exhonérations et bourses</h5>
                             </div>
                             <div class="card-tools float-right">
                                 <a data-toggle="modal" data-target="#nouvel_element"
