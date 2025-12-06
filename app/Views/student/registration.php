@@ -8,7 +8,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url('dashboard'); ?>"
                                     class="text-primary">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dossiers scolaires</li>
+                            <li class="breadcrumb-item active" aria-current="page">Dossiers Etudiants</li>
                             <li class="breadcrumb-item active" aria-current="page">Inscriptions</li>
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('student/listing'); ?>"
@@ -24,9 +24,9 @@
                         <div class="form-floating input-group" style="width: 100%!important;">
                             <select id="ajax_sections" name="ajax_sections" title="Classe"
                                 class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                                <option disabled selected>--sélectionnez une section--</option>
+                                <option disabled selected>--sélectionnez une Faculté--</option>
                                 <?php if (session()->has('reportingtype') && (session()->get('reportingtype') == 'yearly_students')): ?>
-                                    <option value="all">Toutes les sections</option>
+                                    <option value="all">Toutes les Facultés</option>
                                 <?php endif; ?>
                                 <?php
                                 $sections_listing = [];
@@ -52,10 +52,9 @@
                                 <?php endif; ?>
                             </select>
                             <label for="ajax_sections">
-                                <span class="text-danger">*</span>Sections organisées</label>
+                                <span class="text-danger">*</span>Facultés</label>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -64,31 +63,25 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-
             <div class="row">
-
-
                 <?php if (session()->has('choosedsectionid')): ?>
-
                     <div class="col-md-12">
                         <?php
-
                         $last_student_code = (isset($student)) ? $student : '';
                         $valid_student_code = setStudentSchoolIdentification($last_student_code);
-
                         //form validation services call
                         $validation = \Config\Services::validation();
-
-                        //form
+                        //for
                         $attributes = array('role' => 'form', 'autocomplete' => 'off');
                         echo form_open(base_url('register-student'), $attributes);
                         ?>
                         <div class="card card-light">
                             <div class="card-header alert alert-info">
                                 <div class="text-center">
-                                    <h1 class="text-uppercase font-weight-bold">Inscription des nouveaux élèves</h1>
+                                    <h1 class="text-uppercase font-weight-bold">
+                                        Inscription des nouveaux étudiants</h1>
                                     <p>
-                                        Veuillez remplir le formulaire ci-dessous pour inscrire un nouvel élève
+                                        Veuillez remplir le formulaire ci-dessous pour inscrire un nouvel étudiant
                                         avec des informations requises de son dossier scolaire.
                                     </p>
                                 </div>
@@ -115,7 +108,7 @@
                                                 class="form-control select2 select2-info text-capitalize <?= ($validation->hasError('classeEleve')) ? ' is-invalid' : '' ?>"
                                                 id="classeEleve" name="classeEleve" data-dropdown-css-class="select2-info"
                                                 style="width: 100%;">
-                                                <option selected="selected" disabled>Sélectionnez une classe</option>
+                                                <option selected="selected" disabled>Sélectionnez une promotion</option>
                                                 <?php if (isset($classes) && !empty($classes)):
                                                     $branch_access = session()->get('choosedsectionid');
                                                     foreach ($classes as $key => $clasvalue):
@@ -130,8 +123,8 @@
                                                     <?php endforeach; ?>
                                                 <?php endif; ?>
                                             </select>
-                                            <label for="classeEleve"><span class="text-danger">*</span>Classe à
-                                                inscrire</label>
+                                            <label for="classeEleve"><span class="text-danger">*</span>Promotion à
+                                                affecter</label>
                                             <?php if ($validation->hasError('classeEleve')) { ?>
                                                 <span class="invalid-feedback">
                                                     <?= $validation->getError('classeEleve'); ?></span>
@@ -149,7 +142,7 @@
                                                 <span class="invalid-feedback">
                                                     <?= $validation->getError('nomEleve'); ?></span>
                                             <?php } ?>
-                                            <label for="nom_eleve"><span class="text-danger">*</span>Nom</label>
+                                            <label for="nom_eleve"><span class="text-danger">*</span>Nom étudiant</label>
 
                                         </div>
                                     </div>
@@ -159,7 +152,7 @@
                                             <input type="text" name="postnomEleve" id="postnomEleve" autocomplete="off"
                                                 class="form-control <?= ($validation->hasError('postnomEleve')) ? ' is-invalid' : '' ?>"
                                                 placeholder="Ex: Kasongo" value="<?= set_value('postnomEleve'); ?>">
-                                            <label for="postnomEleve"><span class="text-danger"></span>Postnom
+                                            <label for="postnomEleve"><span class="text-danger"></span>Postnom étudiant
                                             </label>
                                             <?php if ($validation->hasError('postnomEleve')) { ?>
                                                 <span class="invalid-feedback">
@@ -176,7 +169,7 @@
                                                 <span class="invalid-feedback">
                                                     <?= $validation->getError('prenomEleve'); ?></span>
                                             <?php } ?>
-                                            <label for="prenom_Eleve"><span class="text-danger"></span>Prénom
+                                            <label for="prenom_Eleve"><span class="text-danger"></span>Prénom étudiant
                                             </label>
                                         </div>
                                     </div>
@@ -189,17 +182,17 @@
                                                 <option selected="selected" disabled>-- Sélectionnez --
                                                 </option>
                                                 <option value="masculin" <?= set_select('sexeEleve', 'masculin'); ?>>
-                                                    Masculin
+                                                    Homme
                                                 </option>
                                                 <option value="feminin" <?= set_select('sexeEleve', 'feminin'); ?>>
-                                                    Feminin
+                                                    Femme
                                                 </option>
                                             </select>
                                             <?php if ($validation->hasError('sexeEleve')) { ?>
                                                 <span class="invalid-feedback">
                                                     <?= $validation->getError('sexeEleve'); ?></span>
                                             <?php } ?>
-                                            <label form="sexeEleve"><span class="text-danger">*</span>Sexe </label>
+                                            <label form="sexeEleve"><span class="text-danger">*</span>Sexe étudiant</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-lg-4 mb-2">
@@ -227,7 +220,7 @@
                                                     <?= $validation->getError('lieuNaissanceEleve'); ?></span>
                                             <?php } ?>
                                             <label for="lieuNaissanceEleve"><span class="text-danger"></span>Lieu
-                                                Naissance élève</label>
+                                                Naissance</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-lg-4 mb-2">
@@ -242,7 +235,7 @@
                                                     <?= $validation->getError('dateNaissanceEleve'); ?></span>
                                             <?php } ?>
                                             <label for="dateNaissanceEleve"><span class="text-danger"></span>Date
-                                                naissance élève:</label>
+                                                naissance</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-lg-4 mb-2">
@@ -255,8 +248,8 @@
                                                 <span class="invalid-feedback">
                                                     <?= $validation->getError('ecole_provenance'); ?></span>
                                             <?php } ?>
-                                            <label for="ecole_provenance"><span class="text-danger"></span>Ecole de
-                                                provenance</label>
+                                            <label for="ecole_provenance">
+                                                <span class="text-danger"></span>Etablissement de provenance</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-lg-4 mb-2">
@@ -269,8 +262,7 @@
                                                 <span class="invalid-feedback">
                                                     <?= $validation->getError('numero_sernie'); ?></span>
                                             <?php } ?>
-                                            <label for="numero_sernie"><span class="text-danger"></span>Numéro
-                                                Sernie</label>
+                                            <label for="numero_sernie"><span class="text-danger"></span>Numéro Permanent</label>
 
                                         </div>
                                     </div>
@@ -321,7 +313,8 @@
                                                 <span class="invalid-feedback">
                                                     <?= $validation->getError('confession'); ?></span>
                                             <?php } ?>
-                                            <label form="confession"><span class="text-danger">*</span>Confession religieuse
+                                            <label form="confession"><span class="text-danger">*</span>
+                                                Confession religieuse
                                             </label>
                                         </div>
                                     </div>
@@ -417,8 +410,8 @@
                                                 class="form-control select2 select2-info <?= ($validation->hasError('tuteurEleve')) ? ' is-invalid' : '' ?>"
                                                 id="student_parent" name="tuteurEleve"
                                                 data-dropdown-css-class="select2-info" style="width: 100%;">
-                                                <option selected disabled> sélectionnez un parent </option>
-                                                <option value="new_parent">Ajouter un responsable</option>
+                                                <option selected disabled>--sélectionnez un responsable--</option>
+                                                <option value="new_parent">Ajouter un responsable de l'étudiant</option>
                                                 <?php
                                                 $count = 1;
                                                 if (isset($parents) && !empty($parents)):
@@ -439,7 +432,7 @@
                                                     <?= $validation->getError('tuteurEleve'); ?></span>
                                             <?php } ?>
                                             <label for="student_parent"><span class="text-danger">*</span>Responsable de
-                                                l'élève</label>
+                                                l'étudiant</label>
                                         </div>
                                     </div>
                                 </div>
@@ -558,8 +551,8 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label class="phone_sms"><span class="text-danger">*</span>Personne
-                                                Responsable à contacter en cas d'urgence
-                                                :</label>
+                                                 à contacter en cas d'urgence
+                                                </label>
                                             <div class="input-group">
                                                 <div class="icheck-success d-inline mr-3">
                                                     <input type="radio" name="phone_sms" checked id="pere" value="pere">
@@ -586,7 +579,7 @@
                                         <div class="form-group">
                                             <label class="phone_primary"><span class="text-danger">*</span>Numéro
                                                 téléphone du responsable à contacter d'urgence
-                                                :</label>
+                                                </label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
@@ -643,7 +636,7 @@
                                                     <?= $validation->getError('student_commune'); ?></span>
                                             <?php } ?>
                                             <label for="student_commune"><span class="text-danger"></span>Commune de
-                                                l'élève</label>
+                                                l'étudiant</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-3 col-lg-3 mb-2">
@@ -668,7 +661,7 @@
                                                     <?= $validation->getError('student_area'); ?></span>
                                             <?php } ?>
                                             <label for="student_area"><span class="text-danger"></span>Quartier de
-                                                l'élève</label>
+                                                l'étudiant</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-lg-6 mb-2">
@@ -696,7 +689,7 @@
                                                     <?= $validation->getError('address_street'); ?></span>
                                             <?php } ?>
                                             <label for="address_street"><span class="text-danger"></span>Avenue/Rue de
-                                                l'élève</label>
+                                                l'étudiant</label>
                                         </div>
                                     </div>
                                 </div>
@@ -757,12 +750,12 @@
                                     <span>N.B: (*) information obligatoire</span>
                                 </div>
                                 <div class="text-right">
-                                    <button type="submit" class="btn btn-info btn-rounded text-uppercase">
-                                        <i class="fas fa-check-circle fa-lg"></i> Valider l'inscription
+                                    <button type="submit" class="btn btn-info btn-rounded">
+                                        <i class="fas fa-check-circle fa-lg"></i> Valider l'inscription de l'étudiant
                                     </button>
                                     <a href="<?= base_url('student/registration'); ?>"
-                                        class="btn btn-danger btn-rounded text-uppercase">
-                                        <i class="fas fa-window-close fa-lg"></i> Annuler
+                                        class="btn btn-outline-danger btn-rounded">
+                                        <i class="fas fa-window-close fa-lg"></i> Annuler l'inscription de l'étudiant
                                     </a>
                                 </div>
                             </div>

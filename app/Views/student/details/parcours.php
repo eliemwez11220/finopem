@@ -8,14 +8,14 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= base_url('overview') ?>">Accueil</a>
                         </li>
-                        <li class="breadcrumb-item active">Détails Parcours</li>
+                        <li class="breadcrumb-item active">Détails Parcours étudiant</li>
                     </ol>
                 </div>
                 <div class="col-sm-6">
                     <div class="card-tools printoff">
                         <a href="<?= base_url('student/parcours'); ?>"
                             class="btn btn-info btn-rounded text-uppercase btn-sm">
-                            <i class="fas fa-reply fa-lg"></i> Liste
+                            <i class="fas fa-reply fa-lg"></i> Liste des étudiants
                         </a>
                         <a data-toggle="modal" data-target="#nouvelle_annee" href="#"
                             class="btn btn-primary btn-sm  text-uppercase">
@@ -47,7 +47,7 @@
                             <div class="card-header bg-info text-center">
                                 <h1 class="text-uppercase font-weight-bold">
                                     <span class="h3 font-weight-bold">
-                                        Parcours de l'élève à l'école <?= session()->schoolname; ?>
+                                        Parcours de l'étudiant à l'établissement<?= session()->schoolname; ?>
                                     </span>
                                     <br />
                                     <span class="text-primary h2">
@@ -78,8 +78,8 @@
                                         <tr class="text-uppercase text-center small">
                                             <th class="text-center">#</th>
                                             <th>Année</th>
-                                            <th>Classe</th>
-                                            <th>Option</th>
+                                            <th>Promotion</th>
+                                            <th>Filiere</th>
                                             <th>Section</th>
                                             <th>Etat</th>
                                             <th>Provenance</th>
@@ -123,7 +123,7 @@
                                                 <a class="<?= $access_delete; ?> btn btn-sm btn-outline-danger"
                                                     href="<?= base_url('student/remove/parcours/'.$value['inscription_id']); ?>"
                                                     onclick="return confirm('Voulez-vous vraiment annulé ce parcours? cette opération est irreversible après confirmation.');">
-                                                    <i class="fa fa-window-close fa-lg"></i></span> Supprimer
+                                                    <i class="fa fa-window-close fa-lg"></i></span>
                                                 </a>
                                                 
                                             </td>

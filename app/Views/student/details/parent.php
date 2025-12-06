@@ -16,19 +16,21 @@
                     <div class="card-title">
                         <a href="<?= base_url('student/parents'); ?>"
                             class="btn btn-info btn-rounded text-uppercase btn-xs">
-                            <i class="fas fa-reply fa-lg"></i> Liste parents
+                            <i class="fas fa-reply fa-lg"></i> Liste contacts
                         </a>
 
                         <a href="<?= base_url('student/editForm/parent/' . $parent['parent_id']); ?>"
                             class="btn btn-primary btn-rounded text-uppercase btn-xs">
-                            <i class="fa fa-edit"></i> Modifier fiche
+                            <i class="fa fa-edit"></i> Modifier fiche contact
                         </a>
                     </div>
                     <div class="card-tools float-right">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="<?= base_url('overview') ?>">Accueil</a>
+                            <li class="breadcrumb-item">
+                                <a href="<?= base_url('overview') ?>">Accueil</a>
                             </li>
-                            <li class="breadcrumb-item active">Parents</li>
+                            <li class="breadcrumb-item active">Contacts</li>
+                            <li class="breadcrumb-item active">étudiants</li>
                         </ol>
                     </div>
 
@@ -45,7 +47,7 @@
                     <div class="card">
                         <div class="card-header bg-info text-center">
                             <h1 class="font-weight-bold text-uppercase">
-                                Détails fiche parent
+                                Détails fiche contacts étudiants
                             </h1>
                         </div>
 
@@ -62,7 +64,7 @@
                                     </thead>
                                     <tbody class="small">
                                         <tr>
-                                            <td>Identifiant parent</td>
+                                            <td>Identifiant contact</td>
                                             <td class="text-uppercase">
                                                 <?= (isset($parent)) ? esc($parent['parent_code']) : 'Aucun libelle'; ?>
                                             </td>
@@ -253,22 +255,22 @@
                         <!-- /.card-header -->
                         <div class="card-footer">
                             <div class="text-center font-weight-bold text-uppercase">
-                                Liste de ses enfants
+                                Liste des étudiants attachés
                             </div>
                             <div class="table-responsive">
                                 <table id="datatablesExample2"
                                     class="table table-sm table-bordered table-hover table-head-fixed text-nowrap">
                                     <thead>
                                         <tr class="text-uppercase small">
+                                        <th>Détails</th>
                                             <th>#</th>
                                             <th>Matricule</th>
-                                            <th>Noms Elève</th>
+                                            <th>Noms</th>
                                             <th>Sexe</th>
-                                            <th>Classe</th>
+                                            <th>Promotion</th>
                                             <th>Etat</th>
                                             <th>Provenance</th>
                                             <th>Inscription</th>
-                                            <th>Détails</th>
                                         </tr>
                                     </thead>
                                     <tbody class="small">
@@ -279,6 +281,20 @@
                                                     $status = (!empty(esc($value['student_status'])) ? esc($value['student_status']) : 'inactif');
                                                     ?>
                                         <tr class="small">
+                                        <td width="2px" class="text-center">
+                                                <a href="<?= base_url('student/editForm/inscription/' . esc($value['inscription_id'])); ?>"
+                                                    class="btn btn-xs btn-outline-warning" data-toggle="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Cliquer pour modifier cette information">
+                                                    <i class="fa fa-edit fa-2x"></i>
+                                                </a>
+
+                                                <a href="<?= base_url('student/details/inscription/' . esc($value['inscription_id'])); ?>"
+                                                    class="btn btn-xs btn-outline-info" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Cliquer pour voir les details">
+                                                    <i class="fa fa-info-circle fa-2x"></i>
+                                                </a>
+                                            </td>
                                             <td scope="1"><?= $count++; ?></td>
 
                                             <td class="text-uppercase"><?= esc($value['student_code']); ?></td>
@@ -307,20 +323,7 @@
                                             </td>
                                             <td class="text-uppercase"><?= esc($value['inscription_created_at']); ?>
                                             </td>
-                                            <td width="2px" class="text-center">
-                                                <a href="<?= base_url('student/editForm/inscription/' . esc($value['inscription_id'])); ?>"
-                                                    class="btn btn-xs btn-outline-warning" data-toggle="tooltip"
-                                                    data-placement="bottom"
-                                                    title="Cliquer pour modifier cette information">
-                                                    <i class="fa fa-edit fa-2x"></i>
-                                                </a>
-
-                                                <a href="<?= base_url('student/details/inscription/' . esc($value['inscription_id'])); ?>"
-                                                    class="btn btn-xs btn-outline-info" data-toggle="tooltip"
-                                                    data-placement="bottom" title="Cliquer pour voir les details">
-                                                    <i class="fa fa-info-circle fa-2x"></i>
-                                                </a>
-                                            </td>
+                                            
                                         </tr>
                                         <?php endforeach; ?>
                                         <?php endif; ?>

@@ -8,7 +8,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url('dashboard'); ?>"
                                     class="text-primary">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dossiers scolaires</li>
+                            <li class="breadcrumb-item active" aria-current="page">Dossiers étudiants</li>
                             <li class="breadcrumb-item active" aria-current="page">Réinscription</li>
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('student/listing'); ?>"
@@ -22,11 +22,11 @@
                 <div class="col-sm-12 col-lg-12">
                     <form role="form" id="ajax_form_sections" method="get">
                         <div class="form-floating input-group" style="width: 100%!important;">
-                            <select id="ajax_sections" name="ajax_sections" title="Classe"
+                            <select id="ajax_sections" name="ajax_sections" title="promotion"
                                 class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                                <option disabled selected>--sélectionnez une section--</option>
+                                <option disabled selected>--sélectionnez une Facultés--</option>
                                 <?php if (session()->has('reportingtype') && (session()->get('reportingtype') == 'yearly_students')): ?>
-                                <option value="all">Toutes les sections</option>
+                                <option value="all">Toutes les Facultés</option>
                                 <?php endif; ?>
                                 <?php
                                 $sections_listing = [];
@@ -52,7 +52,7 @@
                                 <?php endif; ?>
                             </select>
                             <label for="ajax_sections">
-                                <span class="text-danger">*</span>Sections organisées</label>
+                                <span class="text-danger">*</span>Facultés</label>
                         </div>
                     </form>
                 </div>
@@ -70,9 +70,9 @@
                     <div class="about">
                         <div class="content ps-0 ps-lg-5 fw-bold">
                             <ul>
-                                <li><i class="bi bi-check-circle-fill"></i> Saisir le numéro matricule de l'élève
+                                <li><i class="bi bi-check-circle-fill"></i> Saisir le numéro matricule de l'étudiant
                                 </li>
-                                <li><i class="bi bi-check-circle-fill"></i> Choisir un site du système de l'école
+                                <li><i class="bi bi-check-circle-fill"></i> Choisir un site du système de l'établissement
                                 </li>
                                 <li><i class="bi bi-check-circle-fill"></i> Cliquer sur vérifier les données
                                 </li>
@@ -85,7 +85,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h3 class="font-weight-bold text-uppercase text-left h4">Vérification de l'élève</h3>
+                            <h3 class="font-weight-bold text-uppercase text-left h4">Vérification de l'étudiant</h3>
                             <form action="<?= base_url('onlineStudentRegistration'); ?>" method="GET" role="form">
 
                                 <?php $validation = \Config\Services::validation(); ?>
@@ -98,7 +98,7 @@
                                                 value="<?= isset($studentquery) ? $studentquery: set_value('student'); ?>"
                                                 autofocus required>
                                             <label for="student"><span class="text-danger">*</span>Numéro matricule de
-                                                l'élève</label>
+                                                l'étudiant</label>
                                             <?php if ($validation->hasError('student')) { ?>
                                             <span class="invalid-feedback text-danger">
                                                 <?= $validation->getError('student'); ?></span>
@@ -108,26 +108,14 @@
                                     <div class="col-md-12 col-lg-6 col-sm-12">
                                         <div class="form-floating mb-3">
                                             <select name="school" id="school" class="form-control">
-                                                <option disabled>-- Sélectionnez une école ici --</option>
+                                                <option disabled>-- Sélectionnez un établissement --</option>
                                                 <option value="local" selected
                                                     <?= (isset($schoolquery) && ($schoolquery == 'local')) ? 'selected':set_select('school', 'local'); ?>>
                                                     SITE LOCAL
                                                 </option>
-                                                <option value="ville"
-                                                    <?= (isset($schoolquery) && ($schoolquery == 'ville')) ? 'selected':set_select('school', 'ville'); ?>>
-                                                    CS. MALKIA VILLE
-                                                </option>
-                                                <option value="kalubwe"
-                                                    <?= (isset($schoolquery) && ($schoolquery == 'kalubwe')) ? 'selected':set_select('school', 'kalubwe'); ?>>
-                                                    CS. MALKIA
-                                                    KALUBWE</option>
-                                                <option value="usoke"
-                                                    <?= (isset($schoolquery) && ($schoolquery == 'usoke')) ? 'selected':set_select('school', 'usoke'); ?>>
-                                                    CS. MALKIA USOKE
-                                                </option>
 
                                             </select>
-                                            <label for="school"><span class="text-danger">*</span>Sites de l'école</label>
+                                            <label for="school"><span class="text-danger">*</span>Sites de l'établissements</label>
                                             <?php if ($validation->hasError('school')) { ?>
                                             <span class="invalid-feedback text-danger">
                                                 <?= $validation->getError('school'); ?></span>
@@ -166,25 +154,25 @@
                         <div class="card-header alert alert-primary">
                             <div class="text-center">
                                 <h1 class="text-uppercase font-weight-bold">
-                                    Réinscription des anciens élèves
+                                    Réinscription des anciens étudiants
                                 </h1>
                                 <h3 class="text-uppercase font-weight-bold">
-                                    Dossier de l'élève <span class="text-danger">
+                                    Dossier de l'étudiant <span class="text-danger">
                                         <?= strtoupper($student['student_lastname']) . ' ' . strtoupper($student['student_firstname']). ' '. strtoupper($student['student_surname']); ?>
                                     </span>
-                                    actuellement en classe de
+                                    actuellement en promotion de
                                     <span class="text-danger">
                                         <?= setDegresLevels($student['degree_code'], 'f') . ' ' . strtoupper($student['classe_subname']) . ' ' . strtoupper($student['option_name']); ?>
                                     </span>
-                                    pour l'année scolaire
+                                    pour l'année académique
                                     <span class="text-danger">
                                         <?= $student['year_started']; ?>-
                                         <?= $student['year_ended']; ?>
                                     </span>
                                 </h3>
                                 <p>
-                                    Veuillez remplir le formulaire ci-dessous pour actualiser les données de l'élève
-                                    avec des informations requises de son dossier scolaire.
+                                    Veuillez remplir le formulaire ci-dessous pour actualiser les données de l'étudiant
+                                    avec des informations requises de son dossier académique.
                                 </p>
                             </div>
                         </div>
@@ -207,16 +195,16 @@
                                 <div class="col-sm-8 col-lg-8 mb-2">
                                     <div class="form-floating">
                                         <select
-                                            class="form-control select2 select2-info text-capitalize <?= ($validation->hasError('classeEleve')) ? ' is-invalid' : '' ?>"
-                                            id="classeEleve" name="classeEleve" data-dropdown-css-class="select2-info"
+                                            class="form-control select2 select2-info text-capitalize <?= ($validation->hasError('promotionEleve')) ? ' is-invalid' : '' ?>"
+                                            id="promotionEleve" name="promotionEleve" data-dropdown-css-class="select2-info"
                                             style="width: 100%;">
-                                            <option selected="selected" disabled>Sélectionnez une classe</option>
-                                            <?php if (isset($classes) && !empty($classes)):
+                                            <option selected="selected" disabled>Sélectionnez une promotion</option>
+                                            <?php if (isset($promotions) && !empty($promotions)):
                                 $branch_access = session()->get('choosedsectionid');
-                                foreach ($classes as $key => $clasvalue):
+                                foreach ($promotions as $key => $clasvalue):
                                     if (($branch_access == $clasvalue['section_id'])): ?>
                                             <option value="<?= esc($clasvalue['classe_id']); ?>"
-                                                <?= ($student['inscription_classe_id'] == $clasvalue['classe_id']) ? 'selected' : set_select('ajax_students_classes', esc($clasvalue['classe_id'])); ?>>
+                                                <?= ($student['inscription_classe_id'] == $clasvalue['classe_id']) ? 'selected' : set_select('ajax_students_promotions', esc($clasvalue['classe_id'])); ?>>
                                                 <?= setDegresLevels($clasvalue['degree_code'], 'f'); ?>
                                                 <?= strtoupper($clasvalue['classe_subname']); ?>
                                                 <?= strtoupper($clasvalue['option_name']); ?>
@@ -225,11 +213,11 @@
                                             <?php endforeach; ?>
                                             <?php endif; ?>
                                         </select>
-                                        <label for="classeEleve"><span class="text-danger">*</span>Classe à
+                                        <label for="promotionEleve"><span class="text-danger">*</span>promotion à
                                             inscrire</label>
-                                        <?php if ($validation->hasError('classeEleve')) { ?>
+                                        <?php if ($validation->hasError('promotionEleve')) { ?>
                                         <span class="invalid-feedback">
-                                            <?= $validation->getError('classeEleve'); ?></span>
+                                            <?= $validation->getError('promotionEleve'); ?></span>
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -328,7 +316,7 @@
                                             <?= $validation->getError('lieuNaissanceEleve'); ?></span>
                                         <?php } ?>
                                         <label for="lieuNaissanceEleve"><span class="text-danger"></span>Lieu
-                                            Naissance élève</label>
+                                            Naissance étudiant</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-4 mb-2">
@@ -344,7 +332,7 @@
                                             <?= $validation->getError('dateNaissanceEleve'); ?></span>
                                         <?php } ?>
                                         <label for="dateNaissanceEleve"><span class="text-danger"></span>Date
-                                            naissance élève:</label>
+                                            naissance étudiant:</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-4 mb-2">
@@ -433,7 +421,7 @@
                                 </div>
                                 <div class="col-sm-12 py-3 text-center">
                                     <h3 class="text-danger text-uppercase font-weight-bold">Informations sur les
-                                        Responsables de l'élève</h3>
+                                        Responsables de l'étudiant</h3>
                                 </div>
                             </div>
                             <div class="row">
@@ -665,7 +653,7 @@
                                             <?= $validation->getError('address_street'); ?></span>
                                         <?php } ?>
                                         <label for="address_street"><span class="text-danger">*</span>Avenue/Rue de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
                             </div>
@@ -693,7 +681,7 @@
                                             <?= $validation->getError('student_commune'); ?></span>
                                         <?php } ?>
                                         <label for="student_commune"><span class="text-danger">*</span>Commune de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 mb-2">
@@ -718,7 +706,7 @@
                                             <?= $validation->getError('student_area'); ?></span>
                                         <?php } ?>
                                         <label for="student_area"><span class="text-danger">*</span>Quartier de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 form-floating mb-2" id="inputs_commune_show"

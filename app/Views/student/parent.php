@@ -9,8 +9,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url('dashboard'); ?>"
                                     class="text-primary">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dossiers scolaires</li>
-                            <li class="breadcrumb-item active" aria-current="page">Parents</li>
+                            <li class="breadcrumb-item active" aria-current="page">Dossiers</li>
+                            <li class="breadcrumb-item active" aria-current="page">Contacts</li>
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('student/parents'); ?>"
                                     class="btn btn-info btn-rounded text-uppercase float-right">
@@ -38,7 +38,7 @@
 
                         <div class="card">
                             <div class="card-header bg-info text-center">
-                                <h1 class="=text-uppercase font-weight-bold">Création fiche parent</h1>
+                                <h1 class="=text-uppercase font-weight-bold">Création fiche responsable étudiant</h1>
                             </div>
                             <div class="card-body">
 

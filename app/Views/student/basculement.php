@@ -5,15 +5,15 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="font-weight-bold">Basculement annuel des élèves</h1>
+                    <h1 class="font-weight-bold">Basculement annuel des étudiants</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item">
                             <a href="<?= base_url('overview') ?>">Accueil</a>
                         </li>
-                        <li class="breadcrumb-item active">Dossiers scolaires</li>
-                        <li class="breadcrumb-item active">Classement élèves</li>
+                        <li class="breadcrumb-item active">Dossiers</li>
+                        <li class="breadcrumb-item active">Classement étudiants</li>
                     </ol>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                                                                     class="form-control select2 select2-info"
                                                                     data-dropdown-css-class="select2-info">
 
-                                                                    <option disabled selected>-- Sélectionnez une classe à basculer--
+                                                                    <option disabled selected>-- Sélectionnez une promotion à basculer--
                                                                     </option>
                                                                 <?php
                                                                     $count = 1;
@@ -85,8 +85,8 @@
                                                                             <th>#</th>
                                                                             <th>Classement</th>
                                                                             <th>Matricule</th>
-                                                                            <th>Noms Elève</th>
-                                                                            <th>Ancienne Classe</th>
+                                                                            <th>Noms étudiants</th>
+                                                                            <th>Ancienne promotion</th>
                                                                             
                                                                         </tr>
                                                                         </thead>
@@ -148,14 +148,14 @@
 
                                                         <div class="form-group">
                                                             <label for="classe_uid_nouvelle"><span
-                                                                        class="text-danger">*</span>Nouvelle Classe</label>
+                                                                        class="text-danger">*</span>Nouvelle promotion</label>
                                                             <select class="form-control select2 select2-info text-capitalize <?= ($validation->hasError('classe_uid_nouvelle')) ? ' is-invalid' : '' ?>"
                                                                     id="classe_uid_nouvelle"
                                                                     name="classe_uid_nouvelle"
                                                                     data-dropdown-css-class="select2-info"
                                                                     style="width: 100%;">
                                                                 <option selected="selected" disabled>-- Sélectionnez une
-                                                                    classe --
+                                                                    promotion --
                                                                 </option>
                                                                 <?php
                                                                 $count = 1;
@@ -182,7 +182,7 @@
                                                         <div class="form-floating">
                                                             <textarea name="notes"  id="notes" cols="30" rows="3"
                                                                         class="form-control"><?= set_value('notes') ?> </textarea>
-                                                            <label for="notes">Notes sur le basculement de cette classe</label>
+                                                            <label for="notes">Notes sur le basculement de cette promotion</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -191,7 +191,7 @@
                                                 <button type="submit"
                                                         class="btn btn-info btn-sm  text-uppercase">
                                                     <i class="fa fa-check-circle"></i>
-                                                        Baculer les élèves sélectionnés
+                                                        Baculer les étudiants sélectionnés
                                                 </button>
                                             </div>
                                             <?php else: ?>
@@ -219,7 +219,7 @@
                                                 <div class="card-title">
                                                     <h3 class="text-uppercase small text-center">
                                                         <strong>
-                                                            Basculement global des élèves
+                                                            Basculement global des étudiants
                                                         </strong>
                                                     </h3>
                                                 </div>
@@ -236,8 +236,8 @@
                                                         <thead>
                                                         <tr class="text-uppercase">
                                                             <th width="1px">#</th>
-                                                            <th>Ancienne Classe </th>
-                                                            <th>Nouvelle Classe</th>
+                                                            <th>Ancienne promotion </th>
+                                                            <th>Nouvelle promotion</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -284,7 +284,7 @@
                                                                                     style="width: 100%;">
                                                                                 <option selected="selected" disabled>--
                                                                                     Selectionnez une
-                                                                                    classe --
+                                                                                    promotion --
                                                                                 </option>
                                                                                 <?php
 
@@ -335,12 +335,12 @@
                                     <a class="btn btn-xs btn-outline-info nav-link active" id="vert-tabs-right-home-tab"
                                     data-toggle="pill"
                                     href="#vert-tabs-right-home" role="tab" aria-controls="vert-tabs-right-home"
-                                    aria-selected="true"><span class="text-uppercase">Basculement par classe</span></a>
+                                    aria-selected="true"><span class="text-uppercase">Basculement par promotion</span></a>
                                 
                                     <a class="btn btn-xs btn-outline-info nav-link" id="vert-tabs-right-globale-tab"
                                     data-toggle="pill"
                                     href="#vert-tabs-right-globale" role="tab" aria-controls="vert-tabs-right-globale"
-                                    aria-selected="false"><span class="text-uppercase">Basculement par élève</span></a>
+                                    aria-selected="false"><span class="text-uppercase">Basculement par étudiant</span></a>
                             
                             </div>
                             </div>
@@ -360,7 +360,8 @@
                             <div class="card-header bg-warning text-center">
                                 <h1 class="font-weight-bold text-uppercase small">
                                     <i class="fa fa-warning text-danger" style="color: red"></i>
-                                    Pour effectuer un basculement annuel des élèves, vous devez créer une nouvelle année
+                                    Pour effectuer un basculement annuel des étudiants, 
+                                    vous devez créer une nouvelle année
                                 </h1>
                             </div>
                         </div> 

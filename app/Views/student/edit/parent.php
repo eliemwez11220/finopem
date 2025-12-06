@@ -8,8 +8,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url('dashboard'); ?>"
                                     class="text-primary">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dossiers scolaires</li>
-                            <li class="breadcrumb-item active" aria-current="page">Parents</li>
+                            <li class="breadcrumb-item active" aria-current="page">Dossiers</li>
+                            <li class="breadcrumb-item active" aria-current="page">Contacts étudiants</li>
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('student/parents'); ?>"
                                     class="btn btn-info btn-rounded text-uppercase float-right">
@@ -34,7 +34,7 @@
 
                     <div class="card">
                         <div class="card-header bg-info text-center">
-                            <h1>Modification fiche parents</h1>
+                            <h1>Modification fiche contacts étudiants</h1>
                         </div>
 
                         <!-- /.card-header -->
@@ -58,7 +58,7 @@
                                     <div class="form-group">
                                         <label class="phone_pere"><span class="text-danger"></span>Numéro
                                             téléphone du père
-                                            :</label>
+                                            </label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
@@ -75,7 +75,7 @@
                                     <div class="form-group">
                                         <label class="phone_pere"><span class="text-danger"></span>Numéro
                                             téléphone 2 du père
-                                            :</label>
+                                            </label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
@@ -114,7 +114,7 @@
                                     <div class="form-group">
                                         <label class="phone_mere"><span class="text-danger"></span>Numéro
                                             téléphone de la mère
-                                            :</label>
+                                            </label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
@@ -131,7 +131,7 @@
                                     <div class="form-group">
                                         <label class="phone_mere"><span class="text-danger"></span>Numéro
                                             téléphone 2 de la mère
-                                            :</label>
+                                            </label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-phone"></i></span>
@@ -327,7 +327,7 @@
                                             placeholder="Plus de détails sur les parents"
                                             id="notes"><?= ($parent['parent_notes']) ? ($parent['parent_notes']) :set_value('notes'); ?></textarea>
                                         <label for="notes" class="control-label">
-                                            <span class="text-danger"></span>Observation sur les parents
+                                            <span class="text-danger"></span>Observation sur les responsables
                                         </label>
                                     </div>
                                 </div>
@@ -391,7 +391,7 @@
                                             <?= $validation->getError('student_area'); ?></span>
                                         <?php } ?>
                                         <label for="student_area"><span class="text-danger">*</span>Quartier de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 mb-2">
@@ -417,7 +417,7 @@
                                             <?= $validation->getError('student_commune'); ?></span>
                                         <?php } ?>
                                         <label for="student_commune"><span class="text-danger">*</span>Commune de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
                                 <?php else: ?>
@@ -472,7 +472,7 @@
                                             <?= $validation->getError('student_area'); ?></span>
                                         <?php } ?>
                                         <label for="student_area"><span class="text-danger">*</span>Quartier de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
 
@@ -498,7 +498,7 @@
                                             <?= $validation->getError('student_commune'); ?></span>
                                         <?php } ?>
                                         <label for="student_commune"><span class="text-danger">*</span>Commune de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
                                 <?php endif; ?>

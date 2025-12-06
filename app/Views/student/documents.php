@@ -28,7 +28,7 @@
 
                     <blockquote>
                         <h3 class="text-dark"><i class="fas fa-user-circle"></i>
-                            ELEVE
+                        étudiant
                             [<span class="text-primary text-uppercase">
                                 <?= strtoupper($student['student_firstname']); ?>
                                 <?= strtoupper($student['student_lastname']); ?>

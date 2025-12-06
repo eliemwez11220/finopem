@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="font-weight-bold">Gestion des adresses élèves</h1>
+                    <h1 class="font-weight-bold">Gestion des adresses étudiants</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -13,7 +13,7 @@
                             <a href="<?= base_url('dashboard') ?>">Accueil</a>
                         </li>
                         <li class="breadcrumb-item active">Dossiers</li>
-                        <li class="breadcrumb-item active">Adresses élèves</li>
+                        <li class="breadcrumb-item active">Adresses étudiants</li>
                     </ol>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                             aria-controls="follow_municipalitys_tab" aria-selected="false">
                             <span class="text-uppercase font-weight-bold">
                                 <i class="fas fa-angle-double-right"></i>
-                                Communes des élèves
+                                Communes des étudiants
                             </span>
                         </a>
                         <a class="text-left btn btn-sm btn-outline-primary nav-link <?= (session()->has('sess_tab') && (session()->get('sess_tab') == 'quartiers') ? 'active' : ''); ?>"
@@ -40,7 +40,7 @@
                             role="tab" aria-controls="quartiers_municipalitys_tab" aria-selected="true">
                             <span class="text-uppercase font-weight-bold">
                                 <i class="fas fa-angle-double-right"></i>
-                                Quartiers des élèves
+                                Quartiers des étudiants
                             </span>
                         </a>
 
@@ -218,7 +218,7 @@
                                         <div class="col-sm-12">
                                             <div class="text-center mb-2">
                                                 <h3 class="font-weight-bold lined lined-center">
-                                                    Gestion des quartiers des élèves
+                                                    Gestion des quartiers des étudiants
                                                 </h3>
                                                 <a data-toggle="modal" data-target="#create_new_sanction" href="#"
                                                     class="btn btn-success btn-sm text-uppercase">
@@ -421,7 +421,7 @@
                                         <div class="col-sm-12">
                                             <div class="text-center mb-2">
                                                 <h3 class="font-weight-bold lined lined-center">
-                                                    Gestion zones résidentielles des élèves
+                                                    Gestion zones résidentielles des étudiants
                                                 </h3>
                                             </div>
                                             <div class="card-body table-responsive">

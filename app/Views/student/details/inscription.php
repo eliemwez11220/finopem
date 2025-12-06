@@ -10,29 +10,28 @@
 
                     <a href="<?= base_url('student/editForm/inscription/'.$student['inscription_id']); ?>"
                         class="btn btn-primary btn-rounded text-uppercase">
-                        <i class="fa fa-edit"></i> Modifier dossier
+                        <i class="fa fa-edit"></i> Modifier dossier étudiant
                     </a>
-                    <a data-toggle="modal" data-target="#offcanvasimages" data-backdrop="static"
-                                    data-keyboard="false" href="#" class="btn btn-success  text-uppercase">
-                                    <span data-toggle="tooltip" data-placement="top"
-                                        title="Cliquer pour modifier la photo">
-                                        <i class="fa fa-plus"></i> Changer photo Elève
-                                    </span>
-                                </a>
+                    <a data-toggle="modal" data-target="#offcanvasimages" data-backdrop="static" data-keyboard="false"
+                        href="#" class="btn btn-success  text-uppercase">
+                        <span data-toggle="tooltip" data-placement="top" title="Cliquer pour modifier la photo">
+                            <i class="fa fa-plus"></i> Changer photo étudiant
+                        </span>
+                    </a>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="<?= base_url('overview') ?>">Accueil</a>
                         </li>
-                        <li class="breadcrumb-item active">Dossiers scolaires</li>
-                        <li class="breadcrumb-item active">Elèves</li>
+                        <li class="breadcrumb-item active">Dossiers</li>
+                        <li class="breadcrumb-item active">Etudiants</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
     <?php if(isset($student) && (! empty($student))): ?>
-        <?php $studentavatar = $student['student_picture'];
+    <?php $studentavatar = $student['student_picture'];
         $avatar = base_url('public/uploads/images/' . $studentavatar);
         $defavatar = ($student['student_gender'] == 'masculin')? 'avatar.png':'expertwoman.png';
         $pathdefavatar = base_url('public/img/'.$defavatar);
@@ -47,7 +46,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-lg-12 text-center">
                                     <h1 class="font-weight-bold text-uppercase border-bottom border-danger">Détails
-                                        dossier élève </h1>
+                                        dossier étudiant </h1>
                                 </div>
                                 <div class="col-sm-12 col-lg-6 d-flex">
                                     <img src="<?= (!empty($studentavatar)) ? $avatar: $pathdefavatar; ?>" alt="..."
@@ -70,7 +69,7 @@
                                 </div>
                                 <div class="col-sm-12 col-lg-6">
                                     <h5 class="font-weight-bold text-center mt-3 text-uppercase small">
-                                        Notes: <?= (($student['student_notes'])); ?> 
+                                        Notes: <?= (($student['student_notes'])); ?>
                                     </h5>
                                 </div>
                             </div>
@@ -88,24 +87,24 @@
                                     <tbody>
 
                                         <tr>
-                                            <td>Matricule élève</td>
+                                            <td>Matricule étudiant</td>
                                             <td class="text-uppercase"><?= (($student['student_code'])); ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Numéro Serni</td>
+                                            <td>Identifiant</td>
                                             <td class="text-uppercase"><?= (($student['student_sernie_id'])); ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Nom élève</td>
+                                            <td>Nom étudiant</td>
                                             <td class="text-uppercase"><?= (($student['student_firstname'])); ?> </td>
                                         </tr>
 
                                         <tr>
-                                            <td>Postnom élève</td>
+                                            <td>Postnom étudiant</td>
                                             <td class="text-uppercase"><?= (($student['student_lastname'])); ?> </td>
                                         </tr>
                                         <tr>
-                                            <td>Prenom élève</td>
+                                            <td>Prenom étudiant</td>
                                             <td class="text-uppercase"><?= (($student['student_surname'])); ?> </td>
                                         </tr>
 
@@ -171,12 +170,12 @@
                                         <tr class="alert alert-secondary">
                                             <td colspan="2" class="text-uppercase">
                                                 <strong>
-                                                    Infos sur classe
+                                                    Infos sur la promotion
                                                 </strong>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Sous-classe</td>
+                                            <td>Sous-promo</td>
                                             <td class="text-uppercase">
                                                 <?= ucfirst(($student['classe_subname'])); ?>
                                             </td>
@@ -193,19 +192,18 @@
                                             <td class="text-uppercase"><?= (($student['section_name'])); ?> </td>
                                         </tr>
                                         <tr>
-                                            <td>Option</td>
+                                            <td>Filiere</td>
                                             <td class="text-uppercase"><?= (($student['option_name'])); ?> </td>
                                         </tr>
                                         <tr class="alert alert-secondary">
                                             <td colspan="2" class="text-uppercase">
                                                 <strong>
-                                                    Infos sur parents
+                                                    Infos sur les responsables
                                                 </strong>
                                                 <a href="<?= base_url('student/details/parent/'. esc($student['parent_id'])); ?>"
-                                                   class="btn btn-xs btn-info" data-toggle="tooltip"
-                                                   data-placement="bottom"
-                                                   title="Cliquer pour voir les details">
-                                                    <i class="fa fa-info-circle fa-lg">Voir fiche parent</i>
+                                                    class="btn btn-xs btn-info" data-toggle="tooltip"
+                                                    data-placement="bottom" title="Cliquer pour voir les details">
+                                                    <i class="fa fa-info-circle fa-lg">Voir fiche contact</i>
                                                 </a>
                                             </td>
                                         </tr>
@@ -227,12 +225,12 @@
                                                 <?= (($student['parent_mother_name'])); ?>
                                             </td>
                                         </tr>
-                                       
+
 
                                         <tr class="alert alert-secondary">
                                             <td colspan="2" class="text-uppercase">
                                                 <strong>
-                                                    Contact & Localisation Elèves
+                                                    Contact & Localisation étudiant
                                                 </strong>
                                             </td>
                                         </tr>
@@ -266,7 +264,7 @@
                                         <tr class="alert alert-secondary">
                                             <td colspan="2" class="text-uppercase">
                                                 <strong>
-                                                    Journalisation des actions effectuées sur élèves
+                                                    Journalisation des actions effectuées sur étudiants
                                                 </strong>
                                             </td>
                                         </tr>
@@ -296,7 +294,7 @@
                         <!-- /.card-body -->
                         <div class="card-footer text-center">
 
-                            <h5 class="text-uppercase font-weight-bold">Fiche de renseignement sur élève </h5>
+                            <h5 class="text-uppercase font-weight-bold">Fiche de renseignement sur étudiant </h5>
 
                             <a href="" class="btn btn-default btn-sm text-uppercase" target="_blank">
                                 Voir les details de la fiche</a>
@@ -399,101 +397,137 @@
                                             </td>
                                         </tr>
                                         <!-- Creation nouvelle annee scolaire -->
-<div class="modal fade" id="update_<?= $document['document_id']; ?>">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Modification de <?= $document['document_name']; ?></h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="text-danger"><i class="fa fa-window-close"></i></span>
-                </button>
-            </div>
-            <?php
+                                        <div class="modal fade" id="update_<?= $document['document_id']; ?>">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Modification de
+                                                            <?= $document['document_name']; ?></h4>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true" class="text-danger"><i
+                                                                    class="fa fa-window-close"></i></span>
+                                                        </button>
+                                                    </div>
+                                                    <?php
             $validation = \Config\Services::validation();
             $attributes = array('role' => 'form', 'autocomplete' => 'off');
             echo form_open(base_url('studentAddDocuments/'.$student['student_token'].'/'.$document['document_token']), $attributes);
             ?>
-            <div class="modal-body">
+                                                    <div class="modal-body">
 
-                <div class="row">
-                    <div class="col-sm-12 col-lg-8 mb-2">
-                        <div class="form-floating">
-                            <input type="text" id="<?= 'doc_name'.'1'; ?>" name="<?= 'doc_name'; ?>"
-                                class="form-control" placeholder="(Ex: Bulletin ou Papier)" required="true"
-                                autofocus="true" value="<?= $document['document_name']; ?>">
-                            <label for="<?= 'doc_name'.'1'; ?>"> <span class="text-danger">*</span>
-                            Désignation</label>
-                        </div>
-                    </div>
-                    
-                    <div class="col-sm-12 col-lg-4 mb-2">
-                        <div class="form-floating">
-                            <input type="number" id="<?= 'doc_qty'.'1'; ?>" name="<?= 'doc_qty'; ?>" min="1"
-                                max="10" class="form-control text-uppercase" placeholder="Ex: 2" required="true"
-                                autocomplete="off" step=".01" value="<?= $document['document_quantity']; ?>">
-                            <label for="<?= 'doc_qty'.'1'; ?>"> <span class="text-danger">*</span>Quantité
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-6 mb-2">
-                        <!-- radio -->
-                        <div class="form-floating">
-                            <select id="<?= 'doc_type'.'1'; ?>" name="<?= 'doc_type'; ?>" title="Type"
-                                class="form-control <?= ($validation->hasError('doc_type'.'1')) ? ' is-invalid' : '' ?>"
-                                style="width: 100%;">
-                                <option selected disabled>-- Sélectionnez -- </option>
-                                <option value="document" <?= ($document['document_type'] == 'document') ? 'selected':''; ?>>Document physique déposé</option>
-                                <option value="divers" <?= ($document['document_type'] == 'divers') ? 'selected':''; ?>>Bien matériel déposé </option>
-                                <option value="confusque" <?= ($document['document_type'] == 'confusque') ? 'selected':''; ?>>Bien confusqué </option>
-                            </select>
-                            <label form="<?= 'doc_type'.'1'; ?>"><span class="text-danger">*</span>Type
-                                d'élément </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-6 mb-2">
-                        <div class="form-floating">
-                            <input type="text" id="<?= 'doc_number'.'1'; ?>" name="<?= 'doc_number'; ?>"
-                                class="form-control" placeholder="Ex: xxxxxx" value="<?= $document['document_number']; ?>">
-                            <label for="<?= 'doc_number'.'1'; ?>"> <span class="text-danger"></span>
-                            Numéro de Référence</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-6 mb-2">
-                        <div class="form-floating">
-                            <input type="date" id="<?= 'doc_delivery'.'1'; ?>" name="<?= 'doc_delivery'; ?>"
-                                class="form-control" value="<?= $document['document_delivery_date']; ?>">
-                            <label for="<?= 'doc_delivery'.'1'; ?>"> <span class="text-danger"></span>
-                            Date de <?= ($document['document_type'] == 'document') ? 'délivrance':'fabrication'; ?></label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-6 mb-2">
-                        <div class="form-floating">
-                            <input type="date" id="<?= 'doc_validity'.'1'; ?>" name="<?= 'doc_validity'; ?>"
-                                class="form-control" value="<?= $document['document_validity_date']; ?>">
-                            <label for="<?= 'doc_validity'.'1'; ?>"> <span class="text-danger"></span>
-                            Date  <?= ($document['document_type'] == 'document') ? 'de validité':'d\'expiration'; ?></label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-12 mb-2">
-                        <div class="form-floating mb-3">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-lg-8 mb-2">
+                                                                <div class="form-floating">
+                                                                    <input type="text" id="<?= 'doc_name'.'1'; ?>"
+                                                                        name="<?= 'doc_name'; ?>" class="form-control"
+                                                                        placeholder="(Ex: Bulletin ou Papier)"
+                                                                        required="true" autofocus="true"
+                                                                        value="<?= $document['document_name']; ?>">
+                                                                    <label for="<?= 'doc_name'.'1'; ?>"> <span
+                                                                            class="text-danger">*</span>
+                                                                        Désignation</label>
+                                                                </div>
+                                                            </div>
 
-                            <textarea name="<?= 'doc_notes'; ?>" id="<?= 'doc_notes'.'1'; ?>" cols="30" rows="5"
-                                maxlength="500" placeholder="Descrivez ici..." class="form-control"><?= $document['document_notes']; ?></textarea>
-                            <label for="<?= 'doc_notes'.'1'; ?>">
-                                <span class="text-danger"></span>Observation</label>
+                                                            <div class="col-sm-12 col-lg-4 mb-2">
+                                                                <div class="form-floating">
+                                                                    <input type="number" id="<?= 'doc_qty'.'1'; ?>"
+                                                                        name="<?= 'doc_qty'; ?>" min="1" max="10"
+                                                                        class="form-control text-uppercase"
+                                                                        placeholder="Ex: 2" required="true"
+                                                                        autocomplete="off" step=".01"
+                                                                        value="<?= $document['document_quantity']; ?>">
+                                                                    <label for="<?= 'doc_qty'.'1'; ?>"> <span
+                                                                            class="text-danger">*</span>Quantité
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 col-lg-6 mb-2">
+                                                                <!-- radio -->
+                                                                <div class="form-floating">
+                                                                    <select id="<?= 'doc_type'.'1'; ?>"
+                                                                        name="<?= 'doc_type'; ?>" title="Type"
+                                                                        class="form-control <?= ($validation->hasError('doc_type'.'1')) ? ' is-invalid' : '' ?>"
+                                                                        style="width: 100%;">
+                                                                        <option selected disabled>-- Sélectionnez --
+                                                                        </option>
+                                                                        <option value="document"
+                                                                            <?= ($document['document_type'] == 'document') ? 'selected':''; ?>>
+                                                                            Document physique déposé</option>
+                                                                        <option value="divers"
+                                                                            <?= ($document['document_type'] == 'divers') ? 'selected':''; ?>>
+                                                                            Bien matériel déposé </option>
+                                                                        <option value="confusque"
+                                                                            <?= ($document['document_type'] == 'confusque') ? 'selected':''; ?>>
+                                                                            Bien confusqué </option>
+                                                                    </select>
+                                                                    <label form="<?= 'doc_type'.'1'; ?>"><span
+                                                                            class="text-danger">*</span>Type
+                                                                        d'élément </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 col-lg-6 mb-2">
+                                                                <div class="form-floating">
+                                                                    <input type="text" id="<?= 'doc_number'.'1'; ?>"
+                                                                        name="<?= 'doc_number'; ?>" class="form-control"
+                                                                        placeholder="Ex: xxxxxx"
+                                                                        value="<?= $document['document_number']; ?>">
+                                                                    <label for="<?= 'doc_number'.'1'; ?>"> <span
+                                                                            class="text-danger"></span>
+                                                                        Numéro de Référence</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 col-lg-6 mb-2">
+                                                                <div class="form-floating">
+                                                                    <input type="date" id="<?= 'doc_delivery'.'1'; ?>"
+                                                                        name="<?= 'doc_delivery'; ?>"
+                                                                        class="form-control"
+                                                                        value="<?= $document['document_delivery_date']; ?>">
+                                                                    <label for="<?= 'doc_delivery'.'1'; ?>"> <span
+                                                                            class="text-danger"></span>
+                                                                        Date de
+                                                                        <?= ($document['document_type'] == 'document') ? 'délivrance':'fabrication'; ?></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 col-lg-6 mb-2">
+                                                                <div class="form-floating">
+                                                                    <input type="date" id="<?= 'doc_validity'.'1'; ?>"
+                                                                        name="<?= 'doc_validity'; ?>"
+                                                                        class="form-control"
+                                                                        value="<?= $document['document_validity_date']; ?>">
+                                                                    <label for="<?= 'doc_validity'.'1'; ?>"> <span
+                                                                            class="text-danger"></span>
+                                                                        Date
+                                                                        <?= ($document['document_type'] == 'document') ? 'de validité':'d\'expiration'; ?></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 col-lg-12 mb-2">
+                                                                <div class="form-floating mb-3">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Fermer le mode edition</button>
-                <button type="submit" class="btn btn-info btn-sm text-uppercase">Enregistrer les modifications</button>
-            </div>
-            <?php echo form_close(); ?>
-        </div>
-    </div>
-</div>
+                                                                    <textarea name="<?= 'doc_notes'; ?>"
+                                                                        id="<?= 'doc_notes'.'1'; ?>" cols="30" rows="5"
+                                                                        maxlength="500" placeholder="Descrivez ici..."
+                                                                        class="form-control"><?= $document['document_notes']; ?></textarea>
+                                                                    <label for="<?= 'doc_notes'.'1'; ?>">
+                                                                        <span
+                                                                            class="text-danger"></span>Observation</label>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-between">
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                            data-dismiss="modal">Fermer le mode edition</button>
+                                                        <button type="submit"
+                                                            class="btn btn-info btn-sm text-uppercase">Enregistrer les
+                                                            modifications</button>
+                                                    </div>
+                                                    <?php echo form_close(); ?>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <?php endforeach; ?>
                                         <?php endif; ?>
                                     </tbody>
@@ -505,46 +539,46 @@
             </div>
         </div>
     </section>
-    
-<div class="modal fade" id="offcanvasimages">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title d-inline-flex">
-                    <span id="offcanvasEditLabel" class="h5 text-uppercase">
-                        Changement photo de proifil de l'élève
-                    </span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">
-                            <i class="fa fa-window-close"></i>
+
+    <div class="modal fade" id="offcanvasimages">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title d-inline-flex">
+                        <span id="offcanvasEditLabel" class="h5 text-uppercase">
+                            Changement photo de proifil de l'étudiant
                         </span>
-                    </button>
-            </div>
-            <div class="modal-body">
-                <?php $validation = \Config\Services::validation();
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">
+                                <i class="fa fa-window-close"></i>
+                            </span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <?php $validation = \Config\Services::validation();
                 $attributes = array('role' => "form", 'class' => "formsend");
                 echo form_open_multipart(base_url('edit-student-registration/'.$student['student_id']), $attributes); ?>
-                <div class="row">
-                <input type="hidden" name="studenttoken" value="<?= $student['student_token']; ?>" />
-                    <div class="col-md-12 form-group">
-                        <label for="picture" class="label-control">
-                            <span class="text-danger">*</span>Charger un fichier(PNG, JPG, JPEG, WEBP)</label>
-                        <input type="file" name="picture"
-                            class="form-control btnrounded <?= ($validation->hasError('picture')) ? ' is-invalid' : '' ?>"
-                            id="picture">
-                        <span class="invalid-feedback"><?= displayFormError($validation, 'picture'); ?></span>
+                    <div class="row">
+                        <input type="hidden" name="studenttoken" value="<?= $student['student_token']; ?>" />
+                        <div class="col-md-12 form-group">
+                            <label for="picture" class="label-control">
+                                <span class="text-danger">*</span>Charger un fichier(PNG, JPG, JPEG, WEBP)</label>
+                            <input type="file" name="picture"
+                                class="form-control btnrounded <?= ($validation->hasError('picture')) ? ' is-invalid' : '' ?>"
+                                id="picture">
+                            <span class="invalid-feedback"><?= displayFormError($validation, 'picture'); ?></span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary btnrounded">
-                        Valider la photo</button>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btnrounded">
+                            Valider la photo</button>
+                    </div>
+                    <?= form_close(); ?>
                 </div>
-                <?= form_close(); ?>
             </div>
         </div>
     </div>
-</div>
     <?php endif; ?>
 </div>
 <!-- Creation nouvelle annee scolaire -->
@@ -593,7 +627,7 @@
                                 <option value="document">Document physique déposé</option>
                                 <option value="divers">Bien matériel déposé </option>
                                 <option value="confusque">Bien confusqué </option>
-                                </select>
+                            </select>
                             <label form="<?= 'doc_type'.'1'; ?>"><span class="text-danger">*</span>Type
                                 d'élément </label>
                         </div>

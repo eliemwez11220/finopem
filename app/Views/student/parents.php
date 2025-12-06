@@ -8,8 +8,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url('overview') ?>">Accueil</a></li>
-                            <li class="breadcrumb-item active">Dossiers scolaires</li>
-                            <li class="breadcrumb-item active">Parents</li>
+                            <li class="breadcrumb-item active">Dossiers</li>
+                            <li class="breadcrumb-item active">Contacts</li>
                         </ol>
                     </nav>
                 </div>
@@ -59,8 +59,8 @@
                         <div class="form-floating input-group" style="width: 100%!important;">
                             <select id="ajax_students_classes" name="ajax_students_classes" title="Classe"
                                 class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                                <option disabled selected>--Sélectionnez une classe--</option>
-                                <option value="all">Toutes les classes</option>
+                                <option disabled selected>--Sélectionnez une promotion--</option>
+                                <option value="all">Toutes les promotions</option>
                                 <?php if (isset($classes) && !empty($classes)):
                                         foreach ($classes as $key => $clasvalue):
                                             $branch_access = session()->get('choosedsectionid');
@@ -78,17 +78,17 @@
                                 <?php endforeach; ?>
                                 <?php endif; ?>
                             </select>
-                            <label for="ajax_students_classes"><span class="text-danger">*</span>Classes des
-                                élèves</label>
+                            <label for="ajax_students_classes">
+                                <span class="text-danger">*</span>Promotions</label>
                         </div>
                     </form>
                 </div>
                 <?php endif; ?>
                 <div class="col-sm-4 col-lg-4">
                     <div class="float-right">
-                        <a href="<?= base_url('student/parent'); ?>" class="btn btn-info btn-lg text-uppercase"
+                        <a href="<?= base_url('student/parent'); ?>" class="btn btn-info"
                             data-toggle="tooltip" data-placement="bottom" title="Cliquer pour ajouter un parent">
-                            <i class="fa fa-plus"></i> Nouveau parent
+                            <i class="fa fa-plus"></i> Nouveau contact d'un responsable
                         </a>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="card">
                         <div class="card-header bg-info text-center">
                             <h1 class="text-uppercase font-weight-bold">
-                                Gestion fiches parents d'élèves </h1>
+                                Gestion fiches de contacts des étudiants </h1>
 
                         </div>
                         <!-- /.card-header -->
@@ -116,7 +116,7 @@
                                         <tr class="text-uppercase small">
 
                                             <th>Actions</th>
-                                            <th>Elève</th>
+                                            <th>étudiant</th>
                                             <th>Père</th>
                                             <th>Mère</th>
                                             <th>Tuteur</th>

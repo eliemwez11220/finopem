@@ -5,12 +5,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h5 class="text-uppercase ffont-weight-bold">Suivi scolaire - Parcours des élèves</h5>
+                    <h5 class="text-uppercase ffont-weight-bold">Parcours des étudiants</h5>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('overview/type/dashboard') ?>">Accueil</a>
+                        <li class="breadcrumb-item">
+                            <a href="<?= base_url('overview/type/dashboard') ?>">Accueil</a>
                         </li>
+                        <li class="breadcrumb-item active">Etudiants</li>
                         <li class="breadcrumb-item active">Parcours</li>
                     </ol>
                 </div>
@@ -61,8 +63,8 @@
                             <div class="form-floating input-group" style="width: 100%!important;">
                                 <select id="ajax_students_classes" name="ajax_students_classes" title="Classe"
                                     class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                                    <option disabled selected>--Sélectionnez une classe--</option>
-                                    <option value="all">Toutes les classes</option>
+                                    <option disabled selected>--Sélectionnez une promotion--</option>
+                                    <option value="all">Toutes les promotions</option>
                                     <?php if (isset($classes) && !empty($classes)):
                                         foreach ($classes as $key => $clasvalue):
                                             $branch_access = session()->get('choosedsectionid');
@@ -80,8 +82,8 @@
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 </select>
-                                <label for="ajax_students_classes"><span class="text-danger">*</span>Classes des
-                                    élèves</label>
+                                <label for="ajax_students_classes">
+                                    <span class="text-danger">*</span>Promotions</label>
                             </div>
                         </form>
                     </div>
@@ -98,7 +100,7 @@
                     <div class="card">
                         <div class="card-header bg-info text-center">
                             <h1 class="text-uppercase font-weight-bold">
-                            parcours des élèves inscrits en <?= session()->schoolyear; ?></h1>
+                            parcours des étudiants inscrits en <?= session()->schoolyear; ?></h1>
                 
                         </div>
 
@@ -111,11 +113,11 @@
                                     <tr class="text-uppercase small">
                                         <th>#</th>
                                         <th>Matricule</th>
-                                        <th>Nom Elève</th>
+                                        <th>Noms</th>
                                         <th>Sexe</th>
                                         <th>Statut</th>
                                         <th>Nationalité</th>
-                                        <th>Sernie ID</th>
+                                        <th>Identifiant</th>
                                         <th>Naissance</th>
                                         <th>Parcours</th>
                                     </tr>
@@ -180,23 +182,14 @@
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
-
                                     </tbody>
-
                                 </table>
                             </div>
                         </div>
-                        <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
-
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
     </section>
     <?php endif; ?>
-    <!-- /.content -->
 </div>

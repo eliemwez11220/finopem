@@ -8,7 +8,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?= base_url('dashboard'); ?>"
                                     class="text-primary">Accueil</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dossiers scolaires</li>
+                            <li class="breadcrumb-item active" aria-current="page">Dossiers</li>
                             <li class="breadcrumb-item active" aria-current="page">Inscriptions</li>
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('student/listing'); ?>"
@@ -26,7 +26,7 @@
                     <div class="form-floating input-group" style="width: 100%!important;">
                         <select id="ajax_sections" name="ajax_sections" title="Classe"
                             class="form-control select2 select2-info" data-dropdown-css-class="select2-info">
-                            <option disabled selected>--sélectionnez une section--</option>
+                            <option disabled selected>--sélectionnez--</option>
                             <?php if (session()->has('reportingtype') && (session()->get('reportingtype') == 'yearly_students')): ?>
                             <option value="all">Toutes les sections</option>
                             <?php endif; ?>
@@ -54,7 +54,7 @@
                             <?php endif; ?>
                         </select>
                         <label for="ajax_sections">
-                            <span class="text-danger">*</span>Sections organisées</label>
+                            <span class="text-danger">*</span>Sections</label>
                     </div>
                 </form>
 
@@ -76,7 +76,7 @@
                         <div class="card-header alert alert-info">
                             <div class="text-center">
                                 <h1 class="text-uppercase font-weight-bold">
-                                    Modification dossier élève <br />
+                                    Modification dossier étudiant <br />
                                     <span class="text-primary">
                                         <?= (trim($student['student_firstname'])); ?>
                                         <?= (trim($student['student_lastname'])); ?>
@@ -85,7 +85,7 @@
                                     </span>
                                 </h1>
                                 <p>
-                                    Veuillez remplir le formulaire ci-dessous pour actualiser la fiche élève
+                                    Veuillez remplir le formulaire ci-dessous pour actualiser la fiche étudiant
                                     avec des informations requises de son dossier scolaire.
                                 </p>
                             </div>
@@ -119,7 +119,7 @@
                                             autocomplete="off" placeholder="Ex: Ditotase School"
                                             class="form-control text-capitalize <?= ($validation->hasError('ecole_provenance')) ? ' is-invalid' : '' ?>"
                                             value="<?= trim($student['inscription_origin_school']) ? trim($student['inscription_origin_school']) : set_value('ecole_provenance'); ?>">
-                                        <label for="ecole_provenance"><span class="text-danger"></span>Ecole de
+                                        <label for="ecole_provenance"><span class="text-danger"></span>Etablissement de
                                             provenance</label>
 
                                         <?php if ($validation->hasError('ecole_provenance')) { ?>
@@ -139,8 +139,8 @@
                                         <span class="invalid-feedback">
                                             <?= $validation->getError('numero_sernie'); ?></span>
                                         <?php } ?>
-                                        <label for="numero_sernie"><span class="text-danger"></span>Numéro
-                                            Sernie</label>
+                                        <label for="numero_sernie">
+                                            <span class="text-danger"></span>Numéro Identifiant</label>
                                     </div>
                                 </div><!-- left column -->
                                 <div class="col-sm-4">
@@ -149,10 +149,10 @@
 
                                         <input type="text" name="nomEleve" id="nom_eleve" autocomplete="off"
                                             class="form-control text-capitalize <?= ($validation->hasError('nomEleve')) ? ' is-invalid' : '' ?>"
-                                            placeholder="Nom élève"
+                                            placeholder="Nom étudiant"
                                             value="<?= trim($student['student_firstname']) ? trim($student['student_firstname']) : set_value('nomEleve'); ?>"
                                             autofocus>
-                                        <label for="nom_eleve"><span class="text-danger">*</span>Nom</label>
+                                        <label for="nom_eleve"><span class="text-danger">*</span>Nom étudiant</label>
                                         <?php if ($validation->hasError('nomEleve')) { ?>
                                         <span class="invalid-feedback">
                                             <?= $validation->getError('nomEleve'); ?></span>
@@ -165,10 +165,10 @@
 
                                         <input type="text" name="postnomEleve" id="postnomEleve" autocomplete="off"
                                             class="form-control text-capitalize <?= ($validation->hasError('postnomEleve')) ? ' is-invalid' : '' ?>"
-                                            placeholder="Post-nom élève"
+                                            placeholder="Post-nom étudiant"
                                             value="<?= trim($student['student_lastname']) ? trim($student['student_lastname']) : set_value('postnomEleve'); ?>">
                                         <label for="postnomEleve">
-                                            <span class="text-danger"></span>Postnom
+                                            <span class="text-danger"></span>Postnom étudiant
                                         </label>
                                         <?php if ($validation->hasError('postnomEleve')) { ?>
                                         <span class="invalid-feedback">
@@ -182,9 +182,9 @@
 
                                         <input type="text" name="prenomEleve" id="prenom_Eleve" autocomplete="off"
                                             class="form-control text-capitalize <?= ($validation->hasError('prenomEleve')) ? ' is-invalid' : '' ?>"
-                                            placeholder="Prénom élève"
+                                            placeholder="Prénom étudiant"
                                             value="<?= trim($student['student_surname']) ? trim($student['student_surname']) : set_value('prenomEleve'); ?>">
-                                        <label for="prenom_Eleve"><span class="text-danger"></span>Prénom
+                                        <label for="prenom_Eleve"><span class="text-danger"></span>Prénom étudiant
                                         </label>
                                         <?php if ($validation->hasError('prenomEleve')) { ?>
                                         <span class="invalid-feedback">
@@ -202,11 +202,11 @@
                                             </option>
                                             <option value="masculin"
                                                 <?= ($student['student_gender'] == 'masculin') ? 'selected' : set_select('sexeEleve', 'masculin'); ?>>
-                                                Masculin
+                                                Homme
                                             </option>
                                             <option value="feminin"
                                                 <?= ($student['student_gender'] == 'feminin') ? 'selected' : set_select('sexeEleve', 'feminin'); ?>>
-                                                Feminin
+                                                Femme
                                             </option>
                                         </select>
                                         <label form="sexeEleve"><span class="text-danger">*</span>Sexe : </label>
@@ -243,7 +243,7 @@
 
                                         <label for="lieuNaissanceEleve"><span class="text-danger"></span>Lieu
                                             Naissance
-                                            élève</label>
+                                            étudiant</label>
                                         <?php if ($validation->hasError('lieuNaissanceEleve')) { ?>
                                         <span class="invalid-feedback">
                                             <?= $validation->getError('lieuNaissanceEleve'); ?></span>
@@ -259,7 +259,7 @@
                                             name="dateNaissanceEleve" />
 
                                         <label for="dateNaissanceEleve"><span class="text-danger"></span>Date
-                                            naissance élève</label>
+                                            naissance étudiant</label>
 
                                         <?php if ($validation->hasError('dateNaissanceEleve')) { ?>
                                         <span class="invalid-feedback">
@@ -279,7 +279,7 @@
                                             placeholder="Ex: 858533285" autocomplete="off">
                                         <label id="phone_primary" class="ml-5 text-primary"><span
                                                 class="text-danger"></span>Numéro
-                                            téléphone de l'élève</label>
+                                            téléphone de l'étudiant</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -291,7 +291,7 @@
                                             value="<?= trim($student['student_email']) ? trim($student['student_email']) : set_value('email_primary') ?>"
                                             autocomplete="off">
                                         <label class="ml-5 text-primary" for="email_primary">
-                                            <span class="text-danger"></span>Adresse E-mail de l'élève
+                                            <span class="text-danger"></span>Adresse E-mail de l'étudiant
                                         </label>
                                     </div>
                                 </div>
@@ -390,7 +390,7 @@
                                             <?= $validation->getError('permanent_code'); ?></span>
                                         <?php } ?>
                                         <label for="permanent_code"><span class="text-danger"></span>Numéro permanent de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                     </div>
                                 </div>
 
@@ -400,7 +400,7 @@
                                             placeholder="Ex: Av Mwepu, Lubumbashi"
                                             value="<?= ($student['student_address']) ? ($student['student_address']) : set_value('adresseEleve') ?>">
                                         <label for="adresseEleve">
-                                            <span class="text-danger"></span>Adresse de résidence élève</label>
+                                            <span class="text-danger"></span>Adresse de résidence étudiant</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-lg-12">
@@ -410,7 +410,7 @@
                                             class="form-control select2 select2-info text-capitalize <?= ($validation->hasError('classeEleve')) ? ' is-invalid' : '' ?>"
                                             id="classeEleve" name="classeEleve" data-dropdown-css-class="select2-info"
                                             style="width: 100%;">
-                                            <option selected="selected" disabled>-- Sélectionnez une classe --
+                                            <option selected="selected" disabled>-- Sélectionnez une promotion --
                                             </option>
                                             <?php if (isset($classes) && !empty($classes)):
                                                     foreach ($classes as $key => $clasvalue):
@@ -429,7 +429,7 @@
                                             <?php endforeach; ?>
                                             <?php endif; ?>
                                         </select>
-                                        <label for="classeEleve"><span class="text-danger">*</span>Classe
+                                        <label for="classeEleve"><span class="text-danger">*</span>Promotion
                                             inscrite choisie</label>
                                         <?php if ($validation->hasError('classeEleve')) { ?>
                                         <span class="invalid-feedback">
@@ -444,7 +444,7 @@
                                             class="form-control select2 select2-info <?= ($validation->hasError('tuteurEleve')) ? ' is-invalid' : '' ?>"
                                             id="tuteurEleve" name="tuteurEleve" data-dropdown-css-class="select2-info"
                                             style="width: 100%;">
-                                            <option selected disabled>-- Sélectionnez un parent --</option>
+                                            <option selected disabled>-- Sélectionnez un Responsable --</option>
                                             <?php
                                                     $count = 1;
                                                     if (isset($parents) && !empty($parents)):
@@ -461,7 +461,7 @@
                                             <?php endif; ?>
                                         </select>
                                         <label for="tuteurEleve"><span class="text-danger">*</span>Responsable de
-                                            l'élève</label>
+                                            l'étudiant</label>
                                         <?php if ($validation->hasError('tuteurEleve')) { ?>
                                         <span class="invalid-feedback">
                                             <?= $validation->getError('tuteurEleve'); ?></span>
@@ -472,10 +472,10 @@
                                     <div class="form-floating">
 
                                         <textarea rows="5" cols="30" class="form-control bg-light" name="notes"
-                                            placeholder="Plus de détails sur l'élève"
+                                            placeholder="Plus de détails sur l'étudiant"
                                             id="notes"><?= ($student['student_notes']) ? ($student['student_notes']) : set_value('notes'); ?></textarea>
                                         <label for="notes" class="control-label">
-                                            <span class="text-danger"></span>Observation sur l'élève
+                                            <span class="text-danger"></span>Observation sur l'étudiant
                                         </label>
                                     </div>
                                 </div>
