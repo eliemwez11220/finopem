@@ -1,6 +1,6 @@
 {
-	"name": "Ditotase Magschool",
-	"short_name": "Magschool",
+	"name": "Finopem University",
+	"short_name": "Finopem",
 	"start_url": "/",
 	"scope": "/",
 	"display": "standalone",
@@ -9,7 +9,7 @@
 	"orientation": "any",
 	"lang": "fr",
 	"dir": "ltr",
-	"description": "Magschool est une solution de gestion scolaire des établissements en RDC. Développée par Ditotase, une agence digitale spécialisée dans le développement de solutions informatiques, basée à Lubumbashi en RDC.",
+	"description": "Financial Operations and Management pour l’environnement universitaire. Développée par Ditotase, une entreprise spécialisée dans le développement de solutions informatiques basée à Lubumbashi, en RDC.",
 	"icons": [
 	  {
 		"src": "img/192x192.png",
@@ -22,4 +22,5 @@
 		"type": "image/png"
 	  }
 	]
-  }  
+  }
+  
